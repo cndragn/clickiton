@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-class JsonPlaceholder extends Component {
+class FeaturedMovies extends Component {
 	state = {
 		movies: [],
-		backdrop: null
+		backdrop: ''
 	};
 
 	componentDidMount() {
@@ -41,7 +41,7 @@ class JsonPlaceholder extends Component {
 			>
 				<div className="featured">
 					<div className="container">
-						<h2>In Theatres Now</h2>
+						<h2>In Theaters Now</h2>
 						<div className="row">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
 								<div className="col s6 m4 l2" key={id}>
@@ -60,4 +60,4 @@ class JsonPlaceholder extends Component {
 	}
 }
 
-export default JsonPlaceholder;
+export default FeaturedMovies;

@@ -2,11 +2,22 @@
 	background-size: cover;
 	background-position: center;
 	.featured {
-		background-color: rgba($black, 0.5);
+		background-color: rgba($black, 0.6);
 		color: $white;
 		padding-bottom: 5px;
+		.container {
+			width: 90%;
+		}
 	}
 	h2 {
-		padding-top: 50px;
+		color: $white;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.featured-bg {
+		.featured {
+			padding: 50px 0 75px;
+		}
 	}
 }

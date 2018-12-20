@@ -1,0 +1,36 @@
+.news {
+	.article {
+		width: 450px;
+		max-width: 100%;
+		margin: 0 auto;
+		.image {
+			max-width: 100%;
+			width: 450px;
+			height: 235px;
+
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.news {
+		display: flex;
+		flex-wrap: wrap;
+		.article {
+			width: 50%;
+			padding: 10px;
+		}
+		.article .image {
+			max-width: 100%;
+			width: 450px;
+			height: 235px;
+
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}

@@ -1,9 +1,14 @@
-$primary: #0cdbe8;
-$secondary: #61dafb;
-$black: #000;
-$white: #fff;
+$primary: #ffeb3b;
+$secondary: #68d0f9;
+$black: #1c1c1c;
+$gray: #e2e2e2;
+$white: #fefcff;
 
 h2 {
 	margin-top: 0;
+	padding-top: 50px;
 	font-size: 2rem;
+}
+h3 {
+	font-size: 1.3rem;
 }
