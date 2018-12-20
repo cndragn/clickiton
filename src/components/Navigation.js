@@ -9,7 +9,7 @@ class Navigation extends React.Component {
 						<a href="#!" className="brand-logo">
 							ClickItOn
 						</a>
-						<a href="#" data-target="mobile-demo" className="sidenav-trigger">
+						<a href="http://#" data-target="mobile-demo" className="sidenav-trigger">
 							<i className="material-icons">menu</i>
 						</a>
 						<ul className="right hide-on-med-and-down">
