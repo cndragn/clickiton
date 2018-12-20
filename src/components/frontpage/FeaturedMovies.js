@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import '../../scss/featuredMovies.scss';
+
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class JsonPlaceholder extends Component {
 	state = {
-		persons: []
+		movies: [],
+		backdrop: null
 	};
 
 	componentDidMount() {
 		axios
 			.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
 			.then((res) => {
-				const persons = res.data.results;
-				console.log(persons);
-				this.setState({ persons });
+				const movies = res.data.results;
+				const backdrop = res.data.results[0].backdrop_path;
+				this.setState({ movies });
+				this.setState({ backdrop });
 			});
 	}
 
 	featuredMovies() {
 		let movieArr = [];
-		Object(this.state.persons).forEach(function(movie, i) {
+		Object(this.state.movies).forEach(function(movie, i) {
 			if (i < 6) {
-				console.log(movie.title);
 				movieArr.push(movie);
 			}
 		});
@@ -31,10 +34,18 @@ class JsonPlaceholder extends Component {
 
 	render() {
 		return (
-			<div>
-				<h2>In Theatres Now</h2>
+			<div
+				className="featured-bg"
+				style={{
+					backgroundImage: `url(https://image.tmdb.org/t/p/original${this.state.backdrop})`
+				}}
+			>
+				<div className="featured">
+					<h2>In Theatres Now</h2>
+					<h2>Something</h2>
 
-				<ul>{this.featuredMovies().map(({ title }) => <li key={title}>{title}</li>)}</ul>
+					<ul>{this.featuredMovies().map(({ title }) => <li key={title}>{title}</li>)}</ul>
+				</div>
 			</div>
 		);
 	}
