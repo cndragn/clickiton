@@ -1,7 +1,10 @@
 .featured-bg {
 	background-size: cover;
 	background-position: center;
+	height: 100vh;
 	.featured {
-		background-color: rgba(black, 0.5);
+		background-color: rgba($black, 0.5);
+		height: 100vh;
+		color: $white;
 	}
 }

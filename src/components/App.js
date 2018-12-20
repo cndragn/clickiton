@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FrontPage from '../components/frontpage/FrontPage';
 
-import '../scss/App.scss';
+import '../scss/styles.scss';
 
 class App extends Component {
 	render() {

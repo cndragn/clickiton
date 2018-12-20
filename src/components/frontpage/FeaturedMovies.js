@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import '../../scss/featuredMovies.scss';
-
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class JsonPlaceholder extends Component {
@@ -29,6 +27,7 @@ class JsonPlaceholder extends Component {
 				movieArr.push(movie);
 			}
 		});
+		console.log(movieArr);
 		return movieArr;
 	}
 
@@ -42,9 +41,17 @@ class JsonPlaceholder extends Component {
 			>
 				<div className="featured">
 					<h2>In Theatres Now</h2>
-					<h2>Something</h2>
-
-					<ul>{this.featuredMovies().map(({ title }) => <li key={title}>{title}</li>)}</ul>
+					<div className="row">
+						{this.featuredMovies().map(({ id, title, poster_path }) => (
+							<div class="col s6 m4 l2">
+								<div class="card z-depth-3">
+									<div class="card-image">
+										<img alt={title} src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		);
