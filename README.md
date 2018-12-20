@@ -14,3 +14,6 @@ Movie web app that allows users to view a highlight of new releases and search f
 
 ReactJS, Materialize, SCSS, Travis-CI, Jest/
 CI/CD w Integrated testing and automatic deployment
+
+Third-Party API's
+- [The Movie Database](https://www.themoviedb.org)

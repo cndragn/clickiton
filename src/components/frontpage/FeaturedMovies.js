@@ -40,17 +40,19 @@ class JsonPlaceholder extends Component {
 				}}
 			>
 				<div className="featured">
-					<h2>In Theatres Now</h2>
-					<div className="row">
-						{this.featuredMovies().map(({ id, title, poster_path }) => (
-							<div className="col s6 m4 l2" key={id}>
-								<div className="card z-depth-3">
-									<div className="card-image">
-										<img alt={title} src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
+					<div className="container">
+						<h2>In Theatres Now</h2>
+						<div className="row">
+							{this.featuredMovies().map(({ id, title, poster_path }) => (
+								<div className="col s6 m4 l2" key={id}>
+									<div className="card z-depth-3">
+										<div className="card-image">
+											<img alt={title} src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
+										</div>
 									</div>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ class Navigation extends React.Component {
 		return (
 			<div>
 				<nav className="grey darken-4">
-					<div className="nav-wrapper">
+					<div className="container nav-wrapper">
 						<a href="#!" className="brand-logo">
 							ClickItOn
 						</a>
