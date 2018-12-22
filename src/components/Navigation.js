@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Navigation extends React.Component {
 	render() {
@@ -14,10 +15,10 @@ class Navigation extends React.Component {
 						</a>
 						<ul className="right hide-on-med-and-down">
 							<li>
-								<a href="one.html">One</a>
+								<Link to="/">Home</Link>
 							</li>
 							<li>
-								<a href="two.html">Two</a>
+								<Link to="/featured-movies">In Theaters Now</Link>
 							</li>
 							<li>
 								<a href="three.html">Three</a>
@@ -28,16 +29,13 @@ class Navigation extends React.Component {
 
 				<ul className="sidenav" id="mobile-demo">
 					<li>
-						<a href="sass.html">Sass</a>
+						<a href="one.html">One</a>
 					</li>
 					<li>
-						<a href="badges.html">Components</a>
+						<a href="two.html">Two</a>
 					</li>
 					<li>
-						<a href="collapsible.html">Javascript</a>
-					</li>
-					<li>
-						<a href="mobile.html">Mobile</a>
+						<a href="three.html">Three</a>
 					</li>
 				</ul>
 			</div>

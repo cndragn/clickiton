@@ -1,5 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './scss/styles.scss';
+
+import Nav from './components/Navigation';
+import Home from './components/frontpage/FrontPage';
+import AllFeaturedMovies from './components/movies/AllFeaturedMovies';
+
+const routing = (
+	<Router>
+		<div>
+			<Nav />
+			<Route exact path="/" component={Home} />
+			<Route path="/featured-movies" component={AllFeaturedMovies} />
+		</div>
+	</Router>
+);
+
+ReactDOM.render(routing, document.getElementById('root'));
