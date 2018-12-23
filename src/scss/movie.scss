@@ -1,11 +1,14 @@
 .movie-bg {
 	background-size: cover;
-	background-position: center;
+	position: fixed;
+	overflow: auto;
 	height: 100vh;
-	background-attachment: fixed;
+	width: 100%;
+	background-attachment: scroll;
 	.movie {
-		background-color: rgba($black, 0.6);
 		color: $white;
-		height: 100%;
+	}
+	h1 {
+		margin: 0;
 	}
 }

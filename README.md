@@ -18,3 +18,6 @@ CI/CD w Integrated testing and automatic deployment
 Third-Party API's
 - [The Movie Database](https://www.themoviedb.org)
 - [News API](https://newsapi.org)
+
+## Attributions
+Pixabay

@@ -7,7 +7,7 @@ class Navigation extends React.Component {
 	render() {
 		return (
 			<div>
-				<Navbar inverse collapseOnSelect>
+				<Navbar inverse collapseOnSelect fixedTop>
 					<Navbar.Header>
 						<Navbar.Brand>
 							<Link to="/">ClickItOn</Link>
