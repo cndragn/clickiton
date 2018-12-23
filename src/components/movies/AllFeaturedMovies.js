@@ -12,7 +12,7 @@ class AllFeaturedMovies extends Component {
 
 	componentDidMount() {
 		axios
-			.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
+			.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=US`)
 			.then((res) => {
 				const movies = res.data.results;
 				const backdrop = res.data.results[0].backdrop_path;
@@ -34,7 +34,6 @@ class AllFeaturedMovies extends Component {
 										alt={title}
 										title={title}
 										src={`https://image.tmdb.org/t/p/w342${poster_path}`}
-										responsive
 									/>
 								</Col>
 							))}

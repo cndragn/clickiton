@@ -46,7 +46,7 @@ class FeaturedMovies extends Component {
 						<h2>In Theaters Now</h2>
 						<div className="show-grid">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
-								<Col xs={6} md={4} lg={2} key={id}>
+								<Col xs={4} md={3} lg={2} key={id}>
 									<img
 										alt={title}
 										title={title}

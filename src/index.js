@@ -7,6 +7,7 @@ import './scss/styles.scss';
 import Nav from './components/Navigation';
 import Home from './components/frontpage/FrontPage';
 import AllFeaturedMovies from './components/movies/AllFeaturedMovies';
+import Movie from './components/movies/Movie';
 
 const routing = (
 	<Router>
@@ -14,6 +15,7 @@ const routing = (
 			<Nav />
 			<Route exact path="/" component={Home} />
 			<Route path="/featured-movies" component={AllFeaturedMovies} />
+			<Route path="/movie" component={Movie} />
 		</div>
 	</Router>
 );
