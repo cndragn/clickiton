@@ -15,7 +15,7 @@ class Navigation extends React.Component {
 					</Navbar.Header>
 					<Navbar.Collapse>
 						<Nav pullRight>
-							<LinkContainer to="/">
+							<LinkContainer exact to="/">
 								<NavItem eventKey={1}>Home</NavItem>
 							</LinkContainer>
 							<LinkContainer to="/featured-movies">
