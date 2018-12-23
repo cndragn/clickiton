@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Col } from 'react-bootstrap';
+import { Col, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -55,6 +56,11 @@ class FeaturedMovies extends Component {
 								</Col>
 							))}
 						</div>
+					</div>
+					<div className="centered-button">
+						<LinkContainer to="/featured-movies">
+							<Button className="dark">View All In Theaters</Button>
+						</LinkContainer>
 					</div>
 				</div>
 			</div>

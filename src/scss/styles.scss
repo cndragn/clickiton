@@ -7,3 +7,22 @@
 .container {
 	width: 100%;
 }
+
+.centered-button {
+	text-align: center;
+	margin: 30px auto;
+}
+
+.btn-default {
+	background-color: $white;
+	color: $black;
+	border: 2px solid $black;
+	border-radius: 0;
+
+	&:hover {
+		color: $black;
+		background: $primary;
+		border: 2px solid $primary;
+		transition: all 0.4s ease 0s;
+	}
+}
