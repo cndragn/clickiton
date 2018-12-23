@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
@@ -29,7 +30,6 @@ class FeaturedMovies extends Component {
 				movieArr.push(movie);
 			}
 		});
-		console.log(movieArr);
 		return movieArr;
 	}
 
@@ -47,12 +47,13 @@ class FeaturedMovies extends Component {
 						<div className="show-grid">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
-									<img
-										alt={title}
-										title={title}
-										src={`https://image.tmdb.org/t/p/w342${poster_path}`}
-										responsive
-									/>
+									<Link to={`/movie/${id}`}>
+										<img
+											alt={title}
+											title={title}
+											src={`https://image.tmdb.org/t/p/w342${poster_path}`}
+										/>
+									</Link>
 								</Col>
 							))}
 						</div>

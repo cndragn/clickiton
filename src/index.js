@@ -15,7 +15,7 @@ const routing = (
 			<Nav />
 			<Route exact path="/" component={Home} />
 			<Route path="/featured-movies" component={AllFeaturedMovies} />
-			<Route path="/movie" component={Movie} />
+			<Route path="/movie/:id" exact component={Movie} />
 		</div>
 	</Router>
 );

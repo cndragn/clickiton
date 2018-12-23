@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
@@ -30,11 +31,13 @@ class AllFeaturedMovies extends Component {
 						<div className="show-grid">
 							{this.state.movies.map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
-									<img
-										alt={title}
-										title={title}
-										src={`https://image.tmdb.org/t/p/w342${poster_path}`}
-									/>
+									<Link to={`/movie/${id}`}>
+										<img
+											alt={title}
+											title={title}
+											src={`https://image.tmdb.org/t/p/w342${poster_path}`}
+										/>
+									</Link>
 								</Col>
 							))}
 						</div>

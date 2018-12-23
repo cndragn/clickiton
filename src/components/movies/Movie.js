@@ -1,11 +1,8 @@
-// https://api.themoviedb.org/3/movie/343611?api_key={api_key}
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import Palette from 'react-palette';
 import movieImg from '../../images/pexels-photo-925744a.png';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
-const movieID = '315064';
 
 // https://developers.themoviedb.org/3/movies/get-movie-credits
 // cast, crew, director, producer
@@ -20,14 +17,21 @@ const movieID = '315064';
 // recommeded movies
 
 class Movie extends Component {
-	state = {
-		movie: [],
-		backdrop: ''
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			movie: [],
+			backdrop: ''
+		};
+	}
 
 	componentDidMount() {
-		axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}`).then((res) => {
+		const { id } = this.props.match.params;
+		console.log(id);
+		axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then((res) => {
 			const movie = res.data;
+			console.log(movie);
 			this.setState({ movie });
 			let backdrop = '';
 			if (movie.backdrop_path == null) {
@@ -35,14 +39,14 @@ class Movie extends Component {
 			} else {
 				backdrop = `https://image.tmdb.org/t/p/original/${res.data.backdrop_path}`;
 			}
-			console.log('backdrop is: ' + backdrop);
 			this.setState({ backdrop });
-			// console.log(movie);
+			console.log(movie);
 		});
 	}
 
-	render() {
+	render(props) {
 		const movie = this.state.movie;
+
 		return (
 			<div
 				className="movie-bg"
@@ -55,7 +59,7 @@ class Movie extends Component {
 						<div
 							className="movie"
 							style={{
-								backgroundColor: `${palette.vibrant}7f`
+								backgroundColor: `${palette.vibrant}cc`
 							}}
 						>
 							<h1>{movie.title}</h1>

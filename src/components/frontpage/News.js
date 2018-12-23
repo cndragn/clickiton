@@ -12,7 +12,6 @@ class News extends React.Component {
 		axios.get(`https://newsapi.org/v2/everything?q=movie+film+actor+actress&apiKey=${API_KEY}`).then((res) => {
 			const news = res.data.articles;
 			this.setState({ news });
-			console.log(news);
 		});
 	}
 
