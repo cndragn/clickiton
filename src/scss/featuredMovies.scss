@@ -5,8 +5,10 @@
 		background-color: rgba($black, 0.6);
 		color: $white;
 		padding-bottom: 5px;
-		.container {
-			width: 90%;
+		img {
+			max-width: 100%;
+			margin: 10px 0;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
 	}
 	h2 {

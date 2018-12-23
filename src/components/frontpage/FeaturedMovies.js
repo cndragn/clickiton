@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Col } from 'react-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -42,15 +43,16 @@ class FeaturedMovies extends Component {
 				<div className="featured">
 					<div className="container">
 						<h2>In Theaters Now</h2>
-						<div className="row">
+						<div className="show-grid">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
-								<div className="col s6 m4 l2" key={id}>
-									<div className="card z-depth-3">
-										<div className="card-image">
-											<img alt={title} src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
-										</div>
-									</div>
-								</div>
+								<Col xs={6} md={4} lg={2} key={id}>
+									<img
+										alt={title}
+										title={title}
+										src={`https://image.tmdb.org/t/p/w342${poster_path}`}
+										responsive
+									/>
+								</Col>
 							))}
 						</div>
 					</div>
