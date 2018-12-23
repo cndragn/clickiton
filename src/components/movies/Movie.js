@@ -59,7 +59,7 @@ class Movie extends Component {
 						<div
 							className="movie"
 							style={{
-								backgroundColor: `${palette.vibrant}cc`
+								backgroundColor: palette.vibrant ? `${palette.vibrant}cc` : '#1c1c1ccc'
 							}}
 						>
 							<h1>{movie.title}</h1>
