@@ -46,6 +46,7 @@ class Movie extends Component {
 
 	render(props) {
 		const movie = this.state.movie;
+		document.title = movie.title;
 
 		return (
 			<div

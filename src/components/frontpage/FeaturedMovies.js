@@ -33,6 +33,10 @@ class FeaturedMovies extends Component {
 		return movieArr;
 	}
 
+	titleLink(link) {
+		return link.replace(/\s+/g, '-').toLowerCase();
+	}
+
 	render() {
 		return (
 			<div
@@ -47,7 +51,7 @@ class FeaturedMovies extends Component {
 						<div className="show-grid">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
-									<Link to={`/movie/${id}`}>
+									<Link to={`/movie/${id}/${this.titleLink(title)}`}>
 										<img
 											alt={title}
 											title={title}

@@ -22,9 +22,6 @@ class Navigation extends React.Component {
 							<LinkContainer to="/featured-movies">
 								<NavItem eventKey={2}>In Theaters Now</NavItem>
 							</LinkContainer>
-							<LinkContainer to="/movie">
-								<NavItem eventKey={3}>Movie</NavItem>
-							</LinkContainer>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
