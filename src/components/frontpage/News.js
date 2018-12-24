@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Col } from 'react-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_NEWS_API_KEY}`;
 
@@ -26,7 +27,7 @@ class News extends React.Component {
 	}
 
 	shorten(str) {
-		var length = 120;
+		var length = 115;
 		return str.length > length ? str.substring(0, length - 3) + '...' : str;
 	}
 
@@ -34,20 +35,22 @@ class News extends React.Component {
 		return (
 			<div className="container">
 				<h2>News</h2>
-				<div className="news">
-					{this.newsLimit().map(({ title, urlToImage, description }) => (
-						<div className="article" key={title}>
-							<h3 className="header">{title.replace(/<.*?>/gm, '')}</h3>
-							<div className="details">
-								<div className="image">
-									<img alt={title} src={urlToImage} />
+				<div className="show-grid">
+					{this.newsLimit().map(({ id, title, urlToImage, description }) => (
+						<Col xs={12} md={6}>
+							<div class="media">
+								<div class="media-left">
+									<img class="media-object" alt={title} src={urlToImage} />
 								</div>
-								<p>
-									{this.shorten(description)}
-									<br />READ ARTICLE
-								</p>
+								<div class="media-body">
+									<h4 class="media-heading">{title.replace(/<.*?>/gm, '')}</h4>
+									<p>
+										{this.shorten(description)}
+										<br />READ ARTICLE
+									</p>
+								</div>
 							</div>
-						</div>
+						</Col>
 					))}
 				</div>
 			</div>
