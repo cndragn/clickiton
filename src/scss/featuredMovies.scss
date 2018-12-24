@@ -5,7 +5,7 @@
 .featured {
 	background-color: rgba($black, 0.6);
 	color: $white;
-	padding-bottom: 5px;
+	padding: 50px 0 30px;
 	.container {
 		width: 100%;
 	}
@@ -14,29 +14,36 @@
 		margin: 10px 0;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
+	.featured-title {
+		display: flex;
+		justify-content: space-between;
+		padding: 30px 15px 20px;
+	}
 	h2 {
 		color: $white;
+		padding-top: 0;
+	}
+	.btn-default {
+		background-color: $black;
+		color: $white;
+		border-color: $primary;
+		height: 100%;
+
+		&:hover {
+			color: $black;
+			background: $primary;
+			transition: all 0.4s ease 0s;
+		}
 	}
 }
 .show-grid {
 	margin-bottom: 30px;
 }
-.btn-default {
-	background-color: $black;
-	color: $white;
-	border-color: $primary;
-
-	&:hover {
-		color: $black;
-		background: $primary;
-		transition: all 0.4s ease 0s;
-	}
-}
 
 @media only screen and (min-width: 992px) {
 	.featured-bg {
 		.featured {
-			padding: 50px 0 30px;
+			padding: 150px 0 100px;
 		}
 	}
 }

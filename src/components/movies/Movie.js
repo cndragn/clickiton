@@ -31,7 +31,6 @@ class Movie extends Component {
 		console.log(id);
 		axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then((res) => {
 			const movie = res.data;
-			console.log(movie);
 			this.setState({ movie });
 			let backdrop = '';
 			if (movie.backdrop_path == null) {
@@ -40,7 +39,6 @@ class Movie extends Component {
 				backdrop = `https://image.tmdb.org/t/p/original/${res.data.backdrop_path}`;
 			}
 			this.setState({ backdrop });
-			console.log(movie);
 		});
 	}
 
@@ -49,23 +47,20 @@ class Movie extends Component {
 		document.title = movie.title;
 
 		return (
-			<div
-				className="movie-bg"
-				style={{
-					backgroundImage: `url(${this.state.backdrop})`
-				}}
-			>
-				<Palette image={this.state.backdrop}>
-					{(palette) => (
+			<Palette image={this.state.backdrop}>
+				{(palette) => (
+					<div
+						className="movie-bg"
+						style={{
+							backgroundImage: `url(${this.state.backdrop})`
+						}}
+					>
 						<div className="movie">
 							<div className="movie-header">
 								<div className="poster">
 									<img
 										alt={movie.title}
 										src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-										style={{
-											borderColor: palette.vibrant ? `${palette.vibrant}e6` : '#1c1c1ccc'
-										}}
 									/>
 								</div>
 								<div className="movie-details">
@@ -79,10 +74,18 @@ class Movie extends Component {
 									<div className="crew" />
 								</div>
 							</div>
+							<div
+								className="content"
+								style={{
+									borderColor: palette.vibrant ? `${palette.vibrant}` : '#1c1c1c'
+								}}
+							>
+								<div className="container" />
+							</div>
 						</div>
-					)}
-				</Palette>
-			</div>
+					</div>
+				)}
+			</Palette>
 		);
 	}
 }

@@ -47,7 +47,13 @@ class FeaturedMovies extends Component {
 			>
 				<div className="featured">
 					<div className="container">
-						<h2>In Theaters Now</h2>
+						<div className="featured-title">
+							<h2>New Releases</h2>
+							<LinkContainer to="/featured-movies">
+								<Button>View All New Movies</Button>
+							</LinkContainer>
+						</div>
+
 						<div className="show-grid">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
@@ -61,11 +67,6 @@ class FeaturedMovies extends Component {
 								</Col>
 							))}
 						</div>
-					</div>
-					<div className="centered-button">
-						<LinkContainer to="/featured-movies">
-							<Button className="dark">View All In Theaters</Button>
-						</LinkContainer>
 					</div>
 				</div>
 			</div>
