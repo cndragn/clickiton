@@ -5,10 +5,31 @@
 	height: 100vh;
 	width: 100%;
 	background-attachment: scroll;
-	.movie {
-		color: $white;
-	}
-	h1 {
-		margin: 0;
+}
+
+.movie {
+	color: $white;
+	margin-top: 50px;
+	background-color: rgba($black, 0.7);
+	.movie-header {
+		display: flex;
+		margin: 0 auto;
+		width: 75%;
+		padding-top: 150px;
+		.poster {
+			width: 300px;
+			width: 50%;
+			img {
+				max-width: 100%;
+				border: 6px double;
+			}
+		}
+		.movie-details {
+			width: 50%;
+			padding: 0 30px;
+			.description {
+				font-size: 1.6rem;
+			}
+		}
 	}
 }

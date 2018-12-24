@@ -57,21 +57,27 @@ class Movie extends Component {
 			>
 				<Palette image={this.state.backdrop}>
 					{(palette) => (
-						<div
-							className="movie"
-							style={{
-								backgroundColor: palette.vibrant ? `${palette.vibrant}cc` : '#1c1c1ccc'
-							}}
-						>
-							<h1>{movie.title}</h1>
-							<img alt={movie.title} src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
-
-							<div className="movie-details">
-								<div className="stats">
-									rating | {movie.runtime} | genres | {movie.release_date}
+						<div className="movie">
+							<div className="movie-header">
+								<div className="poster">
+									<img
+										alt={movie.title}
+										src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+										style={{
+											borderColor: palette.vibrant ? `${palette.vibrant}e6` : '#1c1c1ccc'
+										}}
+									/>
 								</div>
-								<div className="description">{movie.overview}</div>
-								<div className="crew" />
+								<div className="movie-details">
+									<h1>{movie.title}</h1>
+									<div className="stats">
+										<p>
+											rating | {movie.runtime} | genres | {movie.release_date}
+										</p>
+									</div>
+									<div className="description">{movie.overview}</div>
+									<div className="crew" />
+								</div>
 							</div>
 						</div>
 					)}
