@@ -2,10 +2,14 @@
 
 @import "nav";
 @import "featuredMovies";
+@import "comingSoon";
 @import "news";
 @import "allFeaturedMovies";
 @import 'movie';
 
+body {
+	background-color: $light-bg;
+}
 .container {
 	width: 80%;
 }
