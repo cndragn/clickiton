@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import posterImage from '../../images/no-image.png';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 

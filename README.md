@@ -7,7 +7,8 @@ CI/CD Build: https://travis-ci.com/cndragn/clickiton
 ## Description
 
 Movie web app that allows users to view new releases, and detaiils for each movie.
- - Single movie page features accent colour unique to each movie based on colours in the background image.
+ - Randomized New Releases and Coming Soon movies on main with initial movie as background image
+ - Single movie page features accent colour unique to each movie based on colours in the background image
 
  ## Working On
   - Search feature

@@ -27,7 +27,7 @@ class News extends React.Component {
 	}
 
 	shorten(str) {
-		var length = 115;
+		var length = 90;
 		return str.length > length ? str.substring(0, length - 3) + '...' : str;
 	}
 
@@ -45,7 +45,6 @@ class News extends React.Component {
 								<div className="media-body">
 									<h4 className="media-heading">{title.replace(/<.*?>/gm, '')}</h4>
 									<p>
-										{this.shorten(description)}
 										<br />READ ARTICLE
 									</p>
 								</div>
