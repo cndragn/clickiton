@@ -42,7 +42,7 @@ class AllComingSoon extends Component {
 				<div className="all-featured">
 					<div className="container">
 						<h2>Coming Soon</h2>
-						<div className="show-grid">
+						<div className="show-grid auto-clear">
 							{this.movieList().map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
 									<Link to={`/movie/${id}/${this.titleLink(title)}`}>

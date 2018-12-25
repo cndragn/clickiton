@@ -32,7 +32,7 @@ class AllFeaturedMovies extends Component {
 				<div className="all-featured">
 					<div className="container">
 						<h2>New Releases</h2>
-						<div className="show-grid">
+						<div className="show-grid auto-clear">
 							{this.state.movies.map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
 									<Link to={`/movie/${id}/${this.titleLink(title)}`}>
