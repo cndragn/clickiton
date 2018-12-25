@@ -5,7 +5,7 @@ import { Col } from 'react-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-class AllFeaturedMovies extends Component {
+class AllComingSoon extends Component {
 	state = {
 		movies: [],
 		backdrop: ''
@@ -13,7 +13,7 @@ class AllFeaturedMovies extends Component {
 
 	componentDidMount() {
 		axios
-			.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=US`)
+			.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=US`)
 			.then((res) => {
 				const movies = res.data.results;
 				const backdrop = res.data.results[0].backdrop_path;
@@ -26,14 +26,24 @@ class AllFeaturedMovies extends Component {
 		return link.replace(/\s+/g, '-').toLowerCase();
 	}
 
+	movieList() {
+		let movieArr = [];
+		Object(this.state.movies).forEach(function(movie, i) {
+			if (movie.poster_path !== null) {
+				movieArr.push(movie);
+			}
+		});
+		return movieArr;
+	}
+
 	render() {
 		return (
 			<div>
 				<div className="all-featured">
 					<div className="container">
-						<h2>New Releases</h2>
+						<h2>Coming Soon</h2>
 						<div className="show-grid">
-							{this.state.movies.map(({ id, title, poster_path }) => (
+							{this.movieList().map(({ id, title, poster_path }) => (
 								<Col xs={4} md={3} lg={2} key={id}>
 									<Link to={`/movie/${id}/${this.titleLink(title)}`}>
 										<img
@@ -52,4 +62,4 @@ class AllFeaturedMovies extends Component {
 	}
 }
 
-export default AllFeaturedMovies;
+export default AllComingSoon;

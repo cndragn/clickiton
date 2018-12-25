@@ -75,7 +75,7 @@ class ComingSoon extends Component {
 				<div className="container">
 					<div className="featured-title">
 						<h2>Coming Soon</h2>
-						<LinkContainer to="/featured-movies">
+						<LinkContainer to="/coming-soon">
 							<Button>View All</Button>
 						</LinkContainer>
 					</div>
