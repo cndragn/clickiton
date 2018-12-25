@@ -37,20 +37,22 @@ class News extends React.Component {
 				<h2>News</h2>
 				<div className="show-grid">
 					{this.newsLimit().map(({ id, title, urlToImage, description }) => (
-						<Col xs={12} md={6}>
-							<div class="media">
-								<div class="media-left">
-									<img class="media-object" alt={title} src={urlToImage} />
+						<div key={id}>
+							<Col xs={12} md={6}>
+								<div className="media">
+									<div className="media-left">
+										<img className="media-object" alt={title} src={urlToImage} />
+									</div>
+									<div className="media-body">
+										<h4 className="media-heading">{title.replace(/<.*?>/gm, '')}</h4>
+										<p>
+											{this.shorten(description)}
+											<br />READ ARTICLE
+										</p>
+									</div>
 								</div>
-								<div class="media-body">
-									<h4 class="media-heading">{title.replace(/<.*?>/gm, '')}</h4>
-									<p>
-										{this.shorten(description)}
-										<br />READ ARTICLE
-									</p>
-								</div>
-							</div>
-						</Col>
+							</Col>
+						</div>
 					))}
 				</div>
 			</div>

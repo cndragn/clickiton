@@ -5,7 +5,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './scss/styles.scss';
 
 import Nav from './components/Navigation';
-import Home from './components/frontpage/FrontPage';
+import Home from './components/FrontPage';
 import AllFeaturedMovies from './components/movies/AllFeaturedMovies';
 import Movie from './components/movies/Movie';
 

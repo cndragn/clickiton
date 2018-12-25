@@ -14,9 +14,9 @@ class FeaturedMovies extends Component {
 
 	componentDidMount() {
 		axios
-			.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
+			.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=US`)
 			.then((res) => {
-				const movies = res.data.results;
+				const movies = this.shuffle(res.data.results);
 				const backdrop = res.data.results[0].backdrop_path;
 				this.setState({ movies });
 				this.setState({ backdrop });
@@ -35,6 +35,26 @@ class FeaturedMovies extends Component {
 
 	titleLink(link) {
 		return link.replace(/\s+/g, '-').toLowerCase();
+	}
+
+	shuffle(array) {
+		var currentIndex = array.length,
+			temporaryValue,
+			randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
 	}
 
 	render() {
