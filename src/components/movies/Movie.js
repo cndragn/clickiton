@@ -22,28 +22,63 @@ class Movie extends Component {
 
 		this.state = {
 			movie: [],
-			backdrop: ''
+			movieRating: '',
+			releaseDate: '',
+			backdrop: '',
+			genres: []
 		};
 	}
 
 	componentDidMount() {
 		const { id } = this.props.match.params;
-		console.log(id);
 		axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then((res) => {
 			const movie = res.data;
 			this.setState({ movie });
+
 			let backdrop = '';
 			if (movie.backdrop_path == null) {
 				backdrop = movieImg;
 			} else {
-				backdrop = `https://image.tmdb.org/t/p/original/${res.data.backdrop_path}`;
+				backdrop = `https://image.tmdb.org/t/p/w780/${res.data.backdrop_path}`;
 			}
 			this.setState({ backdrop });
+			this.setState({ genres: movie.genres });
 		});
+
+		// Release date, rating
+		axios.get(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${API_KEY}`).then((res) => {
+			const release = res.data.results;
+			release.map((item) => {
+				if (item.iso_3166_1 === 'US' && this.state.release !== null) {
+					this.setState({ releaseDate: item.release_dates[0].release_date });
+					this.setState({ movieRating: item.release_dates[0].certification });
+				}
+				return 0;
+			});
+		});
+	}
+
+	rating(value) {
+		if (value) {
+			return this.state.movieRating;
+		}
+		return 'Not Rated';
+	}
+
+	runtime(time) {
+		var mm = time % 60;
+		var hh = (time - mm) / 60;
+		var hhmm = hh.toString() + 'h ' + mm.toString() + 'm';
+
+		return hhmm;
 	}
 
 	render(props) {
 		const movie = this.state.movie;
+		const releaseDate = new Date(this.state.releaseDate);
+		const DATE_YEAR = { year: 'numeric' };
+		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+		const genres = this.state.genres;
 		document.title = movie.title;
 
 		return (
@@ -64,10 +99,19 @@ class Movie extends Component {
 									/>
 								</div>
 								<div className="movie-details">
-									<h1>{movie.title}</h1>
+									<h1>
+										{movie.title} ({releaseDate.toLocaleDateString('en-US', DATE_YEAR)})
+									</h1>
 									<div className="stats">
 										<p>
-											rating | {movie.runtime} | genres | {movie.release_date}
+											{this.rating()} | {this.runtime(movie.runtime)}
+											<br />
+											{genres.map((genre, index) => (
+												<span key={genre.id}>
+													{genre.name}
+													{index < genres.length - 1 ? ', ' : ''}
+												</span>
+											))}
 										</p>
 									</div>
 									<div className="description">{movie.overview}</div>

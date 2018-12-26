@@ -8,6 +8,7 @@ import News from './frontpage/News';
 
 class FrontPage extends Component {
 	render() {
+		document.title = 'ClickItOn - Entertainment Hub';
 		return (
 			<div>
 				<FeaturedMovies />
