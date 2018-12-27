@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-// https://developers.themoviedb.org/3/movies/get-movie-recommendations
-// recommeded movies
-
 class Videos extends Component {
 	constructor(props) {
 		super(props);

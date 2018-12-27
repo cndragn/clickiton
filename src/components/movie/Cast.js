@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-// https://reactjsexample.com/accessible-accordion-component-for-react/
-
-// https://developers.themoviedb.org/3/movies/get-movie-credits
-// cast, crew, director, producer
+// https://react-bootstrap.github.io/components/panel/
 
 class Videos extends Component {
 	constructor(props) {

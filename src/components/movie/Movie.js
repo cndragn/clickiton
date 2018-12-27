@@ -61,7 +61,9 @@ class Movie extends Component {
 
 		return (
 			<div>
-				<ColorExtractor src={this.state.backdrop} getColors={(colors) => this.setState({ colors: colors })} />
+				<ColorExtractor getColors={(colors) => this.setState({ colors: colors })}>
+					<img className="hidden" alt={movie.title} src={this.state.backdrop} />
+				</ColorExtractor>
 				<div
 					className="movie-bg"
 					style={{
