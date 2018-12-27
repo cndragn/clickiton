@@ -36,8 +36,8 @@ class News extends React.Component {
 			<div className="container">
 				<h2>News</h2>
 				<div className="show-grid auto-clear">
-					{this.newsLimit().map(({ id, title, urlToImage, description }) => (
-						<Col xs={12} md={6} key={id}>
+					{this.newsLimit().map(({ id, title, urlToImage }) => (
+						<Col xs={12} md={6} key={title}>
 							<div className="media">
 								<div className="media-left">
 									<img className="media-object" alt={title} src={urlToImage} />

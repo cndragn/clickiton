@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Palette from 'react-palette';
+import { ColorExtractor } from 'react-color-extractor';
 import MovieHeader from './MovieHeader';
 import Details from './Details';
 import Main from './Main';
@@ -28,7 +28,8 @@ class Movie extends Component {
 			movieRating: '',
 			releaseDate: '',
 			backdrop: '',
-			genres: []
+			genres: [],
+			colors: []
 		};
 	}
 
@@ -45,6 +46,7 @@ class Movie extends Component {
 				backdrop = `https://image.tmdb.org/t/p/w780/${res.data.backdrop_path}`;
 			}
 			this.setState({ backdrop });
+
 			this.setState({ genres: movie.genres });
 		});
 
@@ -61,39 +63,43 @@ class Movie extends Component {
 		});
 	}
 
+	getColors = (colors) => this.setState((state) => ({ colors: [ ...state.colors, ...colors ] }));
+
 	render(props) {
 		const movie = this.state.movie;
-		const releaseDate = new Date(this.state.releaseDate);
-		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-		const genres = this.state.genres;
+		const accent = this.state.colors[0];
 		document.title = movie.title;
 
 		return (
-			<Palette image={this.state.backdrop}>
-				{(palette) => (
-					<div
-						className="movie-bg"
-						style={{
-							backgroundImage: `url(${this.state.backdrop})`
-						}}
-					>
-						<div className="movie">
-							<MovieHeader movie={movie} releaseDate={releaseDate} genres={genres} />
-							<div
-								className="content"
-								style={{
-									borderColor: palette.vibrant ? `${palette.vibrant}` : '#1c1c1c'
-								}}
-							>
-								<div className="containers">
-									<Details />
-									<Main />
-								</div>
+			<div>
+				<ColorExtractor src={this.state.backdrop} getColors={(colors) => this.setState({ colors: colors })} />
+				<div
+					className="movie-bg"
+					style={{
+						backgroundImage: `url(${this.state.backdrop})`
+					}}
+				>
+					<div className="movie">
+						<MovieHeader
+							movie={movie}
+							movieRating={this.state.movieRating}
+							releaseDate={this.state.releaseDate}
+							genres={this.state.genres}
+						/>
+						<div
+							className="content"
+							style={{
+								borderColor: accent
+							}}
+						>
+							<div className="containers">
+								<Details />
+								<Main />
 							</div>
 						</div>
 					</div>
-				)}
-			</Palette>
+				</div>
+			</div>
 		);
 	}
 }

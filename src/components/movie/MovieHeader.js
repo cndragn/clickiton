@@ -4,13 +4,17 @@ import { runtime } from '../../helpers/movies';
 class MovieHeader extends Component {
 	rating(value) {
 		if (value) {
-			return this.state.movieRating;
+			return this.props.movieRating;
 		}
 		return 'Not Rated';
 	}
 
 	render() {
+		const releaseDate = new Date(this.props.releaseDate);
+		const genres = this.props.genres;
 		const DATE_YEAR = { year: 'numeric' };
+		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+
 		return (
 			<div className="movie-header">
 				<div className="poster">
@@ -21,13 +25,13 @@ class MovieHeader extends Component {
 				</div>
 				<div className="movie-details">
 					<h1>
-						{this.props.movie.title} ({this.props.releaseDate.toLocaleDateString('en-US', DATE_YEAR)})
+						{this.props.movie.title} ({releaseDate.toLocaleDateString('en-US', DATE_YEAR)})
 					</h1>
 					<div className="stats">
 						<p>
-							{this.rating()} | {runtime(this.props.movie.runtime)}
+							{this.rating(this.props.movieRating)} | {runtime(this.props.movie.runtime)}
 							<br />
-							{this.props.genres.map((genre, index) => (
+							{genres.map((genre, index) => (
 								<span key={genre.id}>
 									{genre.name}
 									{index < this.props.genres.length - 1 ? ', ' : ''}

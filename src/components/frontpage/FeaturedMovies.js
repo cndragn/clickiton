@@ -35,7 +35,7 @@ class FeaturedMovies extends Component {
 			<div
 				className="featured-bg"
 				style={{
-					backgroundImage: `url(https://image.tmdb.org/t/p/original${this.state.backdrop})`
+					backgroundImage: `url(https://image.tmdb.org/t/p/original/${this.state.backdrop})`
 				}}
 			>
 				<div className="featured">
