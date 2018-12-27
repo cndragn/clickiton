@@ -92,9 +92,9 @@ class Movie extends Component {
 								borderColor: accent
 							}}
 						>
-							<div className="containers">
-								<Details />
+							<div className="container">
 								<Main />
+								<Details />
 							</div>
 						</div>
 					</div>

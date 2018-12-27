@@ -6,7 +6,7 @@ class Main extends Component {
 			<div className="main">
 				<h2>Videos</h2>
 				<h2>Cast</h2>
-				View All
+				View All https://reactjsexample.com/accessible-accordion-component-for-react/
 				<h2>Crew</h2>
 				View All
 			</div>
