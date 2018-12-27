@@ -36,8 +36,22 @@
 		border-top: 10px solid;
 		background-color: $light-bg;
 		color: $black;
-		.container {
+		.containers {
 			height: 350px;
+			display: flex;
+			h2,
+			h3 {
+				margin-top: 0;
+				padding-top: 0;
+			}
+			.sidebar {
+				width: 25%;
+				padding: 10px 0 10px 15px;
+			}
+			.details {
+				width: 75%;
+				padding: 10px 15px 10px 10px;
+			}
 		}
 	}
 }

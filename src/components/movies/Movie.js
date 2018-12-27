@@ -124,7 +124,21 @@ class Movie extends Component {
 									borderColor: palette.vibrant ? `${palette.vibrant}` : '#1c1c1c'
 								}}
 							>
-								<div className="container" />
+								<div className="containers">
+									<div className="sidebar">
+										<h3>Director</h3>
+										<h3>Producer</h3>
+										<h3>Rating</h3>
+										Rotton Tomatos or some other api?
+									</div>
+									<div className="details">
+										<h2>Videos</h2>
+										<h2>Cast</h2>
+										View All
+										<h2>Crew</h2>
+										View All
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { fetchFeatured, titleLink, shuffle } from '../../helpers/movies';
+import { fetchFeatured, titleLink } from '../../helpers/movies';
 import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -13,7 +13,7 @@ class FeaturedMovies extends Component {
 
 	componentDidMount() {
 		axios.get(fetchFeatured()).then((res) => {
-			const movies = shuffle(res.data.results);
+			const movies = res.data.results;
 			const backdrop = res.data.results[0].backdrop_path;
 			this.setState({ movies });
 			this.setState({ backdrop });

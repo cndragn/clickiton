@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { fetchComingSoon, titleLink, shuffle } from '../../helpers/movies';
+import { fetchComingSoon, titleLink } from '../../helpers/movies';
 import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -13,7 +13,7 @@ class ComingSoon extends Component {
 
 	componentDidMount() {
 		axios.get(fetchComingSoon()).then((res) => {
-			const movies = shuffle(res.data.results);
+			const movies = res.data.results;
 			// movies.map(
 			// 	(e) =>
 			// 		e.poster_path == null
