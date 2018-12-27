@@ -2,22 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { ColorExtractor } from 'react-color-extractor';
 import MovieHeader from './MovieHeader';
-import Details from './Details';
 import Main from './Main';
 import movieImg from '../../images/pexels-photo-925744a.png';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
-
-// https://developers.themoviedb.org/3/movies/get-movie-credits
-// cast, crew, director, producer
-
-// https://developers.themoviedb.org/3/movies/get-movie-keywords
-// keywords
-
-// https://developers.themoviedb.org/3/movies/get-movie-videos
-// trailers
-
-// https://developers.themoviedb.org/3/movies/get-movie-recommendations
-// recommeded movies
 
 class Movie extends Component {
 	constructor(props) {
@@ -29,12 +16,14 @@ class Movie extends Component {
 			releaseDate: '',
 			backdrop: '',
 			genres: [],
-			colors: []
+			colors: [],
+			id: this.props.match.params
 		};
 	}
 
 	componentDidMount() {
 		const { id } = this.props.match.params;
+		this.setState({ id });
 		axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then((res) => {
 			const movie = res.data;
 			this.setState({ movie });
@@ -93,8 +82,7 @@ class Movie extends Component {
 							}}
 						>
 							<div className="container">
-								<Main />
-								<Details />
+								<Main id={this.state.id} />
 							</div>
 						</div>
 					</div>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import Videos from './Videos';
+import Cast from './Cast';
+import Recommended from './Recommended';
 
 class Main extends Component {
 	render() {
+		const id = this.props.id;
 		return (
 			<div className="main">
-				<h2>Videos</h2>
-				<h2>Cast</h2>
-				View All https://reactjsexample.com/accessible-accordion-component-for-react/
-				<h2>Crew</h2>
-				View All
+				<Videos id={id} />
+				<Cast id={id} />
+				<Recommended id={id} />
 			</div>
 		);
 	}
