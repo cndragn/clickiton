@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { fetchFeatured, titleLink } from '../../helpers/movies';
+import { fetchComingSoon, titleLink } from '../helpers/movies';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 
-class AllFeaturedMovies extends Component {
+class AllComingSoon extends Component {
 	state = {
 		movies: [],
 		backdrop: ''
 	};
 
 	componentDidMount() {
-		axios.get(fetchFeatured()).then((res) => {
+		axios.get(fetchComingSoon()).then((res) => {
 			const movies = res.data.results;
 			const backdrop = res.data.results[0].backdrop_path;
 			this.setState({ movies });
@@ -19,15 +19,25 @@ class AllFeaturedMovies extends Component {
 		});
 	}
 
+	movieList() {
+		let movieArr = [];
+		Object(this.state.movies).forEach(function(movie, i) {
+			if (movie.poster_path !== null) {
+				movieArr.push(movie);
+			}
+		});
+		return movieArr;
+	}
+
 	render() {
-		document.title = 'ClickItOn: New Releases';
+		document.title = 'ClickItOn: Coming Soon';
 		return (
 			<div>
 				<div className="all-featured">
 					<div className="container">
-						<h2>New Releases</h2>
+						<h2>Coming Soon</h2>
 						<div className="show-grid auto-clear">
-							{this.state.movies.map(({ id, title, poster_path }) => (
+							{this.movieList().map(({ id, title, poster_path }) => (
 								<Col xs={6} md={3} lg={2} key={id}>
 									<Link to={`/movie/${id}/${titleLink(title)}`}>
 										<img
@@ -46,4 +56,4 @@ class AllFeaturedMovies extends Component {
 	}
 }
 
-export default AllFeaturedMovies;
+export default AllComingSoon;

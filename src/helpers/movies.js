@@ -32,3 +32,11 @@ export function shuffle(array) {
 
 	return array;
 }
+
+export function runtime(time) {
+	var mm = time % 60;
+	var hh = (time - mm) / 60;
+	var hhmm = hh.toString() + 'h ' + mm.toString() + 'm';
+
+	return hhmm;
+}

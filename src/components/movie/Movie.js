@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Palette from 'react-palette';
+import MovieHeader from './MovieHeader';
+import Details from './Details';
+import Main from './Main';
 import movieImg from '../../images/pexels-photo-925744a.png';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -58,25 +61,9 @@ class Movie extends Component {
 		});
 	}
 
-	rating(value) {
-		if (value) {
-			return this.state.movieRating;
-		}
-		return 'Not Rated';
-	}
-
-	runtime(time) {
-		var mm = time % 60;
-		var hh = (time - mm) / 60;
-		var hhmm = hh.toString() + 'h ' + mm.toString() + 'm';
-
-		return hhmm;
-	}
-
 	render(props) {
 		const movie = this.state.movie;
 		const releaseDate = new Date(this.state.releaseDate);
-		const DATE_YEAR = { year: 'numeric' };
 		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 		const genres = this.state.genres;
 		document.title = movie.title;
@@ -91,33 +78,7 @@ class Movie extends Component {
 						}}
 					>
 						<div className="movie">
-							<div className="movie-header">
-								<div className="poster">
-									<img
-										alt={movie.title}
-										src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-									/>
-								</div>
-								<div className="movie-details">
-									<h1>
-										{movie.title} ({releaseDate.toLocaleDateString('en-US', DATE_YEAR)})
-									</h1>
-									<div className="stats">
-										<p>
-											{this.rating()} | {this.runtime(movie.runtime)}
-											<br />
-											{genres.map((genre, index) => (
-												<span key={genre.id}>
-													{genre.name}
-													{index < genres.length - 1 ? ', ' : ''}
-												</span>
-											))}
-										</p>
-									</div>
-									<div className="description">{movie.overview}</div>
-									<div className="crew" />
-								</div>
-							</div>
+							<MovieHeader movie={movie} releaseDate={releaseDate} genres={genres} />
 							<div
 								className="content"
 								style={{
@@ -125,19 +86,8 @@ class Movie extends Component {
 								}}
 							>
 								<div className="containers">
-									<div className="sidebar">
-										<h3>Director</h3>
-										<h3>Producer</h3>
-										<h3>Rating</h3>
-										Rotton Tomatos or some other api?
-									</div>
-									<div className="details">
-										<h2>Videos</h2>
-										<h2>Cast</h2>
-										View All
-										<h2>Crew</h2>
-										View All
-									</div>
+									<Details />
+									<Main />
 								</div>
 							</div>
 						</div>

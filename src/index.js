@@ -6,9 +6,9 @@ import './scss/styles.scss';
 
 import Nav from './components/Navigation';
 import Home from './components/FrontPage';
-import AllFeaturedMovies from './components/movies/AllFeaturedMovies';
-import AllComingSoon from './components/movies/AllComingSoon';
-import Movie from './components/movies/Movie';
+import AllFeaturedMovies from './components/AllFeaturedMovies';
+import AllComingSoon from './components/AllComingSoon';
+import Movie from './components/movie/Movie';
 
 const routing = (
 	<Router>
