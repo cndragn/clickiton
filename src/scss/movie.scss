@@ -73,6 +73,13 @@
 		max-height: 218px;
 	}
 }
+.recommended {
+	display: flex;
+	flex-wrap: wrap;
+	.card {
+		display: flex;
+	}
+}
 
 /* Large screens */
 
@@ -91,6 +98,12 @@
 		.sidebar {
 			order: 1;
 			flex: 1 0 0;
+		}
+	}
+	.recommended {
+		.card {
+			display: flex;
+			max-width: calc(50% - 1em);
 		}
 	}
 }

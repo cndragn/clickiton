@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
+import { Row, Col, Thumbnail } from 'react-bootstrap';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 // https://react-bootstrap.github.io/components/panel/
@@ -52,9 +52,8 @@ class Videos extends Component {
 	}
 
 	render() {
-		console.log(this.state.crew);
 		return (
-			<div class="cast">
+			<div className="cast">
 				<h2>Cast</h2>
 				<Row>
 					{this.topCast().map(({ cast_id, name, character, profile_path }) => (

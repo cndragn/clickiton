@@ -15,19 +15,39 @@ class Videos extends Component {
 	componentDidMount() {
 		const { id } = this.props.id;
 		axios
-			.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+			.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`)
 			.then((res) => {
 				const release = res.data.results;
 				this.setState({ recommend: release });
 			});
 	}
 
+	selectMovies() {
+		let movies = [];
+		Object(this.state.recommend).forEach(function(movie, i) {
+			if (movie.poster_path && i < 4) {
+				movies.push(movie);
+			}
+		});
+		return movies;
+	}
+
 	render() {
 		return (
 			<div>
-				<h2>Recommended</h2>
-				<div className="show-grid auto-clear">
-					{this.state.recommend.map(({ id, title, poster_path, overview }) => <p key={id}>{title}</p>)}
+				<h2>Similar Movies</h2>
+				<div className="recommended">
+					{this.selectMovies().map(({ id, title, poster_path, overview }) => (
+						<div className="card" key={id}>
+							<div className="poster">
+								<img src={`http://image.tmdb.org/t/p/w92/${poster_path}`} alt={title} />
+							</div>
+							<div className="desc">
+								<h3>{title}</h3>
+								<p>{overview}</p>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 		);
