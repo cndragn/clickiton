@@ -34,7 +34,6 @@ class Videos extends Component {
 	}
 
 	render() {
-		console.log(this.selectVids());
 		return (
 			<div>
 				<h2>Videos</h2>

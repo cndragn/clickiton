@@ -49,7 +49,7 @@ class FeaturedMovies extends Component {
 
 						<div className="show-grid auto-clear">
 							{this.featuredMovies().map(({ id, title, poster_path }) => (
-								<Col xs={4} md={3} lg={2} key={id}>
+								<Col xs={4} md={2} key={id}>
 									<Link to={`/movie/${id}/${titleLink(title)}`}>
 										<img
 											alt={title}

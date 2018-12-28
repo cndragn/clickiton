@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Lightbox from 'lightbox-react';
 
-// http://jsfiddle.net/8XYNx/10/
+// http://jsfiddle.net/8XYNx/10/ limit vids by media query
 
 class Trailer extends Component {
 	state = {

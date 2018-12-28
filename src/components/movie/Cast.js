@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 // https://react-bootstrap.github.io/components/panel/
+// https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 
 class Videos extends Component {
 	constructor(props) {
@@ -25,14 +27,56 @@ class Videos extends Component {
 		});
 	}
 
+	topCast() {
+		let cast = [];
+		Object(this.state.cast).forEach(function(person, i) {
+			if (person.profile_path && i < 6) {
+				cast.push(person);
+			}
+		});
+		return cast;
+	}
+
+	crewList() {
+		let cast = [];
+		Object(this.state.crew).forEach(function(person, i) {
+			if (person.job === 'Director' || person.job === 'Screenplay') {
+				cast.push(person);
+			}
+		});
+
+		cast.sort(function(a, b) {
+			return a.job < b.job ? -1 : a.job > b.job ? 1 : 0;
+		});
+		return cast.sort();
+	}
+
 	render() {
+		console.log(this.state.crew);
 		return (
-			<div>
+			<div class="cast">
 				<h2>Cast</h2>
-				<div className="show-grid auto-clear" />
-				{this.state.cast.map(({ cast_id, name, character, profile_path }) => <p key={cast_id}>{name}</p>)}
-				<h3>Director / Screenplay</h3>
-				{this.state.crew.map(({ credit_id, name, job }) => <p key={credit_id}>{name}</p>)}
+				<Row>
+					{this.topCast().map(({ cast_id, name, character, profile_path }) => (
+						<Col xs={4} md={2} key={cast_id}>
+							<Thumbnail src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name}>
+								<p>{name}</p>
+								<p>{character}</p>
+							</Thumbnail>
+						</Col>
+					))}
+				</Row>
+				<h3>Crew</h3>
+				<Row>
+					{this.crewList().map(({ credit_id, name, job, profile_path }) => (
+						<Col xs={4} md={2} key={credit_id}>
+							<Thumbnail src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name}>
+								<p>{name}</p>
+								<p>{job}</p>
+							</Thumbnail>
+						</Col>
+					))}
+				</Row>
 			</div>
 		);
 	}

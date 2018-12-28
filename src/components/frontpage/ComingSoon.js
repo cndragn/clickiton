@@ -30,9 +30,6 @@ class ComingSoon extends Component {
 		let movieArr = [];
 		Object(this.state.movies).forEach(function(movie, i) {
 			if (movie.poster_path !== null && movieArr.length < 6) {
-				// if (movieArr.length < 6) {
-				// 	movieArr.push(movie);
-				// }
 				movieArr.push(movie);
 			}
 		});
@@ -52,7 +49,7 @@ class ComingSoon extends Component {
 
 					<div className="show-grid auto-clear">
 						{this.movieList().map(({ id, title, poster_path }) => (
-							<Col xs={4} md={3} lg={2} key={id}>
+							<Col xs={4} md={2} key={id}>
 								<Link to={`/movie/${id}/${titleLink(title)}`}>
 									<img
 										alt={title}
