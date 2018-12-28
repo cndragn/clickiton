@@ -10,10 +10,11 @@ class Trailer extends Component {
 
 	Youtube = () => [
 		<iframe
+			key={this.props.id}
 			title="trailer"
 			width="560"
 			height="315"
-			src={`https://www.youtube.com/embed/${this.props.id}?autoplay=1`}
+			src={`https://www.youtube.com/embed/${this.props.id}?autoplay=1&rel=0`}
 			allowFullScreen
 			style={{
 				maxWidth: '97%',

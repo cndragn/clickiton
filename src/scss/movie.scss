@@ -68,6 +68,16 @@
 		margin-left: -240px;
 	}
 }
+
+// override lightbox-react inline styles
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+	top: 45px !important;
+}
+.ril__zoomInButton,
+.ril__zoomOutButton {
+	display: none !important;
+}
+
 .cast {
 	img {
 		max-height: 218px;
