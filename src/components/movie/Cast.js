@@ -30,13 +30,9 @@ class Videos extends Component {
 			<div>
 				<h2>Cast</h2>
 				<div className="show-grid auto-clear" />
-				{this.state.cast.map(({ id, name, character, profile_path }) => <p key={id}>{name}</p>)}
+				{this.state.cast.map(({ cast_id, name, character, profile_path }) => <p key={cast_id}>{name}</p>)}
 				<h3>Director / Screenplay</h3>
-				{this.state.crew.map(({ id, name, job }) => (
-					<p key={id}>
-						{name} - {job}
-					</p>
-				))}
+				{this.state.crew.map(({ credit_id, name, job }) => <p key={credit_id}>{name}</p>)}
 			</div>
 		);
 	}

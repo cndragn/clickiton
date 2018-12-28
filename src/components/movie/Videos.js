@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
+import 'lightbox-react/style.css';
+import Trailer from './Trailer';
 
-// https://www.npmjs.com/package/react-multimedia-gallery
+const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Videos extends Component {
 	constructor(props) {
@@ -22,16 +23,23 @@ class Videos extends Component {
 		});
 	}
 
+	selectVids() {
+		let movieArr = [];
+		Object(this.state.videos).forEach(function(movie, i) {
+			if (i < 3) {
+				movieArr.push(movie);
+			}
+		});
+		return movieArr;
+	}
+
 	render() {
+		console.log(this.selectVids());
 		return (
 			<div>
 				<h2>Videos</h2>
 				<div className="show-grid auto-clear">
-					{this.state.videos.map(({ id, name }) => (
-						<p key={id}>
-							{id}, {name}
-						</p>
-					))}
+					{this.selectVids().map(({ key, name }) => <Trailer key={key} id={key} />)}
 				</div>
 			</div>
 		);
