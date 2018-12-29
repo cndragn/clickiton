@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Lightbox from 'lightbox-react';
+import { Glyphicon } from 'react-bootstrap';
 
 // http://jsfiddle.net/8XYNx/10/ limit vids by media query
 
@@ -31,7 +32,7 @@ class Trailer extends Component {
 	render() {
 		const { isOpen } = this.state;
 		return (
-			<div className="trailers">
+			<div className="trailer">
 				<div className="img-box">
 					<img
 						alt="stuff"
@@ -39,6 +40,11 @@ class Trailer extends Component {
 						onClick={() => this.setState({ isOpen: true })}
 					/>
 				</div>
+				<Glyphicon
+					glyph="play-circle"
+					style={{ color: this.props.color }}
+					onClick={() => this.setState({ isOpen: true })}
+				/>
 
 				{isOpen && <Lightbox mainSrc={this.Youtube} onCloseRequest={() => this.setState({ isOpen: false })} />}
 			</div>

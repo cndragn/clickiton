@@ -37,8 +37,8 @@ class Videos extends Component {
 		return (
 			<div>
 				<h2>Videos</h2>
-				<div className="show-grid auto-clear">
-					{this.selectVids().map(({ key }) => <Trailer key={key} id={key} />)}
+				<div className="vids">
+					{this.selectVids().map(({ key }) => <Trailer key={key} id={key} color={this.props.color} />)}
 				</div>
 			</div>
 		);

@@ -8,7 +8,7 @@ class Main extends Component {
 		const id = this.props.id;
 		return (
 			<div className="main">
-				<Videos id={id} />
+				<Videos id={id} color={this.props.color} />
 				<Cast id={id} />
 				<Recommended id={id} />
 			</div>

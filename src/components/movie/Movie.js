@@ -87,7 +87,7 @@ class Movie extends Component {
 							}}
 						>
 							<div className="container">
-								<Main id={this.state.id} />
+								<Main id={this.state.id} color={accent} />
 							</div>
 						</div>
 					</div>
