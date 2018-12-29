@@ -5,3 +5,5 @@ $white: #fefcff;
 $primary: #ffeb3b;
 $secondary: #68d0f9;
 $light-bg: #f2f3f2;
+
+$primary-alt: desaturate($primary, 35%);

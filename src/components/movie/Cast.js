@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Row, Col, Thumbnail } from 'react-bootstrap';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-// https://react-bootstrap.github.io/components/panel/
 // https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
+// Combine if director / screenplay are the same
+// http://localhost:3000/movie/466411/speed-kills
 
 class Videos extends Component {
 	constructor(props) {

@@ -19,7 +19,7 @@ class Navigation extends React.Component {
 							<LinkContainer exact to="/">
 								<NavItem eventKey={1}>Home</NavItem>
 							</LinkContainer>
-							<LinkContainer to="/featured-movies">
+							<LinkContainer to="/new-releases">
 								<NavItem eventKey={2}>New Releases</NavItem>
 							</LinkContainer>
 							<LinkContainer to="/coming-soon">

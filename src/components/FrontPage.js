@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FeaturedMovies from './frontpage/FeaturedMovies';
+import FeaturedMovies from './frontpage/NewReleases';
 import ComingSoon from './frontpage/ComingSoon';
 import News from './frontpage/News';
 

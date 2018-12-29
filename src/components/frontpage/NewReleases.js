@@ -42,7 +42,7 @@ class FeaturedMovies extends Component {
 					<div className="container">
 						<div className="featured-title">
 							<h2>New Releases</h2>
-							<LinkContainer to="/featured-movies">
+							<LinkContainer to="/new-releases">
 								<Button>View All</Button>
 							</LinkContainer>
 						</div>

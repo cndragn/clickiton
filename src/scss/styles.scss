@@ -5,6 +5,7 @@
 @import "news";
 @import "allFeaturedMovies";
 @import 'movie';
+@import 'footer';
 
 body {
 	background-color: $light-bg;
@@ -20,6 +21,9 @@ h2 {
 }
 h3 {
 	font-size: 2rem;
+}
+a:hover {
+	text-decoration: none;
 }
 
 .btn-default {
