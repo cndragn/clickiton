@@ -1,15 +1,14 @@
-.movie-bg {
-	background-size: cover;
-	position: fixed;
+.movieWrapper {
 	overflow: auto;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
-	background-attachment: scroll;
+	background: no-repeat center center fixed;
+	background-size: cover;
 }
 
 .movie {
-	color: $white;
 	margin-top: 50px;
+	color: $white;
 	background-color: rgba($black, 0.7);
 	.movie-header {
 		display: flex;
@@ -38,7 +37,6 @@
 		color: $black;
 	}
 	.container {
-		padding: 30px 0;
 		display: flex;
 		flex-flow: row wrap;
 		h2,

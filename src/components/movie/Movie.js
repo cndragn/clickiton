@@ -63,16 +63,16 @@ class Movie extends Component {
 		document.title = movie.title;
 
 		return (
-			<div>
+			<div
+				className="movieWrapper"
+				style={{
+					backgroundImage: `url(${this.state.backdrop})`
+				}}
+			>
 				<ColorExtractor getColors={(colors) => this.setState({ colors: colors })}>
 					<img className="hidden" alt={movie.title} src={this.state.backdrop} />
 				</ColorExtractor>
-				<div
-					className="movie-bg"
-					style={{
-						backgroundImage: `url(${this.state.backdrop})`
-					}}
-				>
+				<div className="movie-bg">
 					<div className="movie">
 						<MovieHeader
 							movie={movie}
