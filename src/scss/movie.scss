@@ -37,6 +37,7 @@
 		color: $black;
 	}
 	.container {
+		width: 98%;
 		display: flex;
 		flex-flow: row wrap;
 		h2,
@@ -51,6 +52,7 @@
 }
 .vids {
 	display: flex;
+	flex-wrap: wrap;
 }
 .trailer {
 	position: relative;
@@ -59,7 +61,7 @@
 	.img-box {
 		width: 350px;
 		height: 200px;
-		margin: 0 5px;
+		margin: 5px;
 		overflow: hidden;
 		position: relative;
 	}
@@ -133,5 +135,11 @@
 			display: flex;
 			max-width: calc(50% - 1em);
 		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.vids {
+		justify-content: space-around;
 	}
 }

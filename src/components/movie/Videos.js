@@ -26,7 +26,7 @@ class Videos extends Component {
 	selectVids() {
 		let movieArr = [];
 		Object(this.state.videos).forEach(function(movie, i) {
-			if (i < 3) {
+			if (i < 2) {
 				movieArr.push(movie);
 			}
 		});
@@ -36,7 +36,7 @@ class Videos extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Videos</h2>
+				<h2>Trailers</h2>
 				<div className="vids">
 					{this.selectVids().map(({ key }) => <Trailer key={key} id={key} color={this.props.color} />)}
 				</div>
