@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-// https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
-// Combine if director / screenplay are the same
-// http://localhost:3000/movie/466411/speed-kills
-
 class Videos extends Component {
 	constructor(props) {
 		super(props);
@@ -37,20 +33,6 @@ class Videos extends Component {
 		return cast;
 	}
 
-	crewList() {
-		let cast = [];
-		Object(this.state.crew).forEach(function(person, i) {
-			if (person.job === 'Director' || person.job === 'Screenplay') {
-				cast.push(person);
-			}
-		});
-
-		cast.sort(function(a, b) {
-			return a.job < b.job ? -1 : a.job > b.job ? 1 : 0;
-		});
-		return cast.sort();
-	}
-
 	render() {
 		return (
 			<div className="cast-crew">
@@ -62,18 +44,6 @@ class Videos extends Component {
 								<img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />
 								<p>{name}</p>
 								<p>{character}</p>
-							</div>
-						))}
-					</div>
-				</div>
-				<h2>Crew</h2>
-				<div className="crew">
-					<div className="cards">
-						{this.crewList().map(({ credit_id, name, job, profile_path }) => (
-							<div className="card" key={credit_id}>
-								<img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />
-								<p>{name}</p>
-								<p>{job}</p>
 							</div>
 						))}
 					</div>

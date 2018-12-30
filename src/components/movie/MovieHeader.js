@@ -9,12 +9,31 @@ class MovieHeader extends Component {
 		return 'Not Rated';
 	}
 
+	director() {
+		let cast = [];
+		Object(this.props.crew).forEach(function(person, i) {
+			if (person.job === 'Director') {
+				cast.push(person);
+			}
+		});
+		return cast;
+	}
+
+	writer() {
+		let cast = [];
+		Object(this.props.crew).forEach(function(person, i) {
+			if (person.job === 'Screenplay') {
+				cast.push(person);
+			}
+		});
+		return cast;
+	}
+
 	render() {
 		const releaseDate = new Date(this.props.releaseDate);
 		const genres = this.props.genres;
 		const DATE_YEAR = { year: 'numeric' };
 		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-
 		return (
 			<div className="movie-header">
 				<div className="poster">
@@ -38,9 +57,24 @@ class MovieHeader extends Component {
 								</span>
 							))}
 						</p>
+						<p>
+							Director:{' '}
+							{this.director().map((person, index) => (
+								<span>
+									{person.name}
+									{index < this.director().length - 1 ? ', ' : ''}
+								</span>
+							))}
+							<br />
+							Screenplay:{' '}
+							{this.writer().map((person, index) => (
+								<span>
+									{person.name} {index < this.writer().length - 1 ? ', ' : ''}
+								</span>
+							))}
+						</p>
 					</div>
 					<div className="description">{this.props.movie.overview}</div>
-					<div className="crew" />
 				</div>
 			</div>
 		);

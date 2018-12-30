@@ -19,6 +19,7 @@ class Movie extends Component {
 			releaseDate: '',
 			backdrop: '',
 			genres: [],
+			crew: [],
 			colors: [],
 			id: this.props.match.params
 		};
@@ -40,6 +41,11 @@ class Movie extends Component {
 			this.setState({ backdrop });
 
 			this.setState({ genres: movie.genres });
+
+			axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`).then((res) => {
+				const release = res.data;
+				this.setState({ crew: release.crew });
+			});
 		});
 
 		// Release date, rating
@@ -58,7 +64,7 @@ class Movie extends Component {
 	getColors = (colors) => this.setState((state) => ({ colors: [ ...state.colors, ...colors ] }));
 
 	render(props) {
-		const movie = this.state.movie;
+		const { movie, crew } = this.state;
 		const accent = this.state.colors[0];
 		document.title = movie.title;
 
@@ -76,6 +82,7 @@ class Movie extends Component {
 					<div className="movie">
 						<MovieHeader
 							movie={movie}
+							crew={crew}
 							movieRating={this.state.movieRating}
 							releaseDate={this.state.releaseDate}
 							genres={this.state.genres}
