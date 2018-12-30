@@ -11,10 +11,16 @@
 
 body {
 	background-color: $light-bg;
+	font-family: $font-body;
 }
 .container {
 	width: 80%;
 	padding: 30px 15px;
+}
+
+.navbar-brand {
+	font-family: $font-logo;
+	font-size: 2.6rem;
 }
 
 h2 {

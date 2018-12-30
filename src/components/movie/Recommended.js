@@ -37,7 +37,7 @@ class Videos extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Similar Movies</h3>
+				<h2>Similar Movies</h2>
 				<div className="recommended">
 					{this.selectMovies().map(({ id, title, poster_path, overview }) => (
 						<div className="card" key={id}>

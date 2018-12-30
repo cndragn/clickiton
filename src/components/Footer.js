@@ -9,9 +9,7 @@ class Footer extends Component {
 					<div className="links">
 						<ul>
 							<li>
-								<Link exact to="/">
-									Home
-								</Link>
+								<Link to="/">Home</Link>
 							</li>
 							<li>
 								<Link to="/new-releases">New Releases</Link>

@@ -40,13 +40,6 @@
 		width: 98%;
 		display: flex;
 		flex-flow: row wrap;
-		h2,
-		h3 {
-			padding-top: 0;
-		}
-		h2 {
-			margin-top: 0;
-		}
 	}
 	.container > * {
 		flex: 1 100%;
@@ -55,6 +48,7 @@
 .vids {
 	display: flex;
 	flex-wrap: wrap;
+	margin-bottom: 20px;
 }
 .trailer {
 	position: relative;

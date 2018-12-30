@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row, Col, Thumbnail } from 'react-bootstrap';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 // https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
@@ -55,11 +54,11 @@ class Videos extends Component {
 	render() {
 		return (
 			<div className="cast-crew">
-				<h3>Cast</h3>
+				<h2>Cast</h2>
 				<div className="cast">
 					<div className="cards">
 						{this.topCast().map(({ cast_id, name, character, profile_path }) => (
-							<div class="card" key={cast_id}>
+							<div className="card" key={cast_id}>
 								<img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />
 								<p>{name}</p>
 								<p>{character}</p>
@@ -67,7 +66,7 @@ class Videos extends Component {
 						))}
 					</div>
 				</div>
-				<h3>Crew</h3>
+				<h2>Crew</h2>
 				<div className="crew">
 					<div className="cards">
 						{this.crewList().map(({ credit_id, name, job, profile_path }) => (
