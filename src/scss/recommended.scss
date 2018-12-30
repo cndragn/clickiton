@@ -1,0 +1,26 @@
+.recommended {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	h4 {
+		margin-top: 0;
+		font-size: 1.7rem;
+	}
+	.card {
+		display: flex;
+		margin: 10px 0;
+		.desc {
+			padding: 0 8px;
+			font-size: 1.2rem;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.recommended {
+		.card {
+			width: 48%;
+		}
+	}
+}

@@ -37,7 +37,7 @@ class Videos extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Similar Movies</h2>
+				<h3>Similar Movies</h3>
 				<div className="recommended">
 					{this.selectMovies().map(({ id, title, poster_path, overview }) => (
 						<div className="card" key={id}>
@@ -45,7 +45,7 @@ class Videos extends Component {
 								<img src={`http://image.tmdb.org/t/p/w92/${poster_path}`} alt={title} />
 							</div>
 							<div className="desc">
-								<h3>{title}</h3>
+								<h4>{title}</h4>
 								<p>{overview}</p>
 							</div>
 						</div>

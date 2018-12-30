@@ -100,14 +100,6 @@
 	display: none !important;
 }
 
-.recommended {
-	display: flex;
-	flex-wrap: wrap;
-	.card {
-		display: flex;
-	}
-}
-
 /* Large screens */
 
 @media only screen and (min-width: 768px) {
