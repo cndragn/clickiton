@@ -60,7 +60,7 @@ class MovieHeader extends Component {
 						<p>
 							Director:{' '}
 							{this.director().map((person, index) => (
-								<span>
+								<span key={person.credit_id}>
 									{person.name}
 									{index < this.director().length - 1 ? ', ' : ''}
 								</span>
@@ -68,7 +68,7 @@ class MovieHeader extends Component {
 							<br />
 							Screenplay:{' '}
 							{this.writer().map((person, index) => (
-								<span>
+								<span key={person.credit_id}>
 									{person.name} {index < this.writer().length - 1 ? ', ' : ''}
 								</span>
 							))}
