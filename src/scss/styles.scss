@@ -5,6 +5,7 @@
 @import "news";
 @import "allFeaturedMovies";
 @import 'movie';
+@import 'cast-crew';
 @import 'footer';
 
 body {
@@ -45,7 +46,25 @@ a:hover {
 	display: none;
 }
 
+// Cards
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	.card {
+		background-color: $white;
+		border: 1px solid $lightgrey;
+		padding: 8px;
+		margin-bottom: 20px;
+	}
+}
+
 @media (min-width: 1200px) {
+	.cards {
+		.card {
+			flex: 0 1 24%;
+		}
+	}
 	.auto-clear .col-lg-1:nth-child(12n + 1) {
 		clear: left;
 	}

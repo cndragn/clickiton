@@ -42,8 +42,10 @@
 		flex-flow: row wrap;
 		h2,
 		h3 {
-			margin-top: 0;
 			padding-top: 0;
+		}
+		h2 {
+			margin-top: 0;
 		}
 	}
 	.container > * {
@@ -98,11 +100,6 @@
 	display: none !important;
 }
 
-.cast {
-	img {
-		max-height: 218px;
-	}
-}
 .recommended {
 	display: flex;
 	flex-wrap: wrap;

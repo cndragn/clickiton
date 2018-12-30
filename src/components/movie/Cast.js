@@ -54,29 +54,31 @@ class Videos extends Component {
 
 	render() {
 		return (
-			<div className="cast">
-				<h2>Cast</h2>
-				<Row>
-					{this.topCast().map(({ cast_id, name, character, profile_path }) => (
-						<Col xs={4} md={2} key={cast_id}>
-							<Thumbnail src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name}>
+			<div className="cast-crew">
+				<h3>Cast</h3>
+				<div className="cast">
+					<div className="cards">
+						{this.topCast().map(({ cast_id, name, character, profile_path }) => (
+							<div class="card" key={cast_id}>
+								<img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />
 								<p>{name}</p>
 								<p>{character}</p>
-							</Thumbnail>
-						</Col>
-					))}
-				</Row>
+							</div>
+						))}
+					</div>
+				</div>
 				<h3>Crew</h3>
-				<Row>
-					{this.crewList().map(({ credit_id, name, job, profile_path }) => (
-						<Col xs={4} md={2} key={credit_id}>
-							<Thumbnail src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name}>
+				<div className="crew">
+					<div className="cards">
+						{this.crewList().map(({ credit_id, name, job, profile_path }) => (
+							<div className="card" key={credit_id}>
+								<img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />
 								<p>{name}</p>
 								<p>{job}</p>
-							</Thumbnail>
-						</Col>
-					))}
-				</Row>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		);
 	}
