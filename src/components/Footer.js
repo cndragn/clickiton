@@ -21,7 +21,7 @@ class Footer extends Component {
 					</div>
 					<div className="credits">
 						<p>
-							ClickItOn
+							<span className="logo">ClickItOn</span>
 							<br />
 							&copy;{new Date().getFullYear()}{' '}
 							<a href="http://www.CandiceDavidson.com">Candice Davidson</a>
