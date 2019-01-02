@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { titleLink } from '../../helpers/movies';
+
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 // https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 
-class Videos extends Component {
+class Recommended extends Component {
 	constructor(props) {
 		super(props);
 
@@ -45,7 +48,9 @@ class Videos extends Component {
 								<img src={`http://image.tmdb.org/t/p/w92/${poster_path}`} alt={title} />
 							</div>
 							<div className="desc">
-								<h4>{title}</h4>
+								<Link to={`/movie/${id}/${titleLink(title)}`}>
+									<h4>{title}</h4>
+								</Link>
 								<p>{overview}</p>
 							</div>
 						</div>
@@ -56,4 +61,4 @@ class Videos extends Component {
 	}
 }
 
-export default Videos;
+export default Recommended;

@@ -3,9 +3,6 @@ import FeaturedMovies from './frontpage/NewReleases';
 import ComingSoon from './frontpage/ComingSoon';
 import News from './frontpage/News';
 
-// https://developers.themoviedb.org/3/movies/get-upcoming
-// coming soon, include region
-
 class FrontPage extends Component {
 	render() {
 		document.title = 'ClickItOn - Entertainment Hub';
