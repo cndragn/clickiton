@@ -22,7 +22,7 @@ class ComingSoon extends Component {
 					</div>
 
 					<div className="show-grid auto-clear">
-						{movieList(6).map(({ id, title, poster_path }) => (
+						{movieList(this, 6).map(({ id, title, poster_path }) => (
 							<Col xs={4} md={2} key={id}>
 								<Link to={`/movie/${id}/${titleLink(title)}`}>
 									<img

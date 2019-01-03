@@ -8,16 +8,16 @@ export function fetchComingSoon() {
 	return `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=US`;
 }
 
-// list of first 6 movies
-export function movieList(num) {
+// list of first n movies
+export const movieList = ({ props }, num) => {
 	let movieArr = [];
-	Object(this.props.movies).forEach(function(movie, i) {
+	Object(props.movies).forEach(function(movie, i) {
 		if (movie.poster_path !== null && movieArr.length < num) {
 			movieArr.push(movie);
 		}
 	});
 	return movieArr;
-}
+};
 
 //remove spaces and set to lower for use in url
 export function titleLink(link) {
