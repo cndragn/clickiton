@@ -65,6 +65,8 @@ class Movie extends Component {
 		const accent = this.state.colors[0];
 		document.title = movie.title;
 
+		console.log(this.props);
+
 		return (
 			<div
 				className="movieWrapper"
