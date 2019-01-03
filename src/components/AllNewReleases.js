@@ -6,20 +6,18 @@ import { Col } from 'react-bootstrap';
 
 class AllFeaturedMovies extends Component {
 	state = {
-		movies: [],
-		backdrop: ''
+		movies: []
 	};
 
 	componentDidMount() {
 		axios.get(fetchFeatured()).then((res) => {
 			const movies = res.data.results;
-			const backdrop = res.data.results[0].backdrop_path;
 			this.setState({ movies });
-			this.setState({ backdrop });
 		});
 	}
 
 	render() {
+		const movies = this.state.movies;
 		document.title = 'ClickItOn: New Releases';
 		return (
 			<div>
@@ -27,7 +25,7 @@ class AllFeaturedMovies extends Component {
 					<div className="container">
 						<h2>New Releases</h2>
 						<div className="show-grid auto-clear">
-							{this.state.movies.map(({ id, title, poster_path }) => (
+							{movies.map(({ id, title, poster_path }) => (
 								<Col xs={6} md={3} lg={2} key={id}>
 									<Link to={`/movie/${id}/${titleLink(title)}`}>
 										<img

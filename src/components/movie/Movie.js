@@ -6,9 +6,6 @@ import Main from './Main';
 import movieImg from '../../images/pexels-photo-925744a.png';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-// check color brightness
-// https://stackoverflow.com/questions/12043187/how-to-check-if-hex-color-is-too-black
-
 class Movie extends Component {
 	constructor(props) {
 		super(props);

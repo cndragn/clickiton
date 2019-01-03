@@ -6,30 +6,18 @@ import { Col } from 'react-bootstrap';
 
 class AllComingSoon extends Component {
 	state = {
-		movies: [],
-		backdrop: ''
+		movies: []
 	};
 
 	componentDidMount() {
 		axios.get(fetchComingSoon()).then((res) => {
 			const movies = res.data.results;
-			const backdrop = res.data.results[0].backdrop_path;
 			this.setState({ movies });
-			this.setState({ backdrop });
 		});
-	}
-
-	movieList() {
-		let movieArr = [];
-		Object(this.state.movies).forEach(function(movie, i) {
-			if (movie.poster_path !== null) {
-				movieArr.push(movie);
-			}
-		});
-		return movieArr;
 	}
 
 	render() {
+		const movies = this.state.movies;
 		document.title = 'ClickItOn: Coming Soon';
 		return (
 			<div>
@@ -37,7 +25,7 @@ class AllComingSoon extends Component {
 					<div className="container">
 						<h2>Coming Soon</h2>
 						<div className="show-grid auto-clear">
-							{this.movieList().map(({ id, title, poster_path }) => (
+							{movies.map(({ id, title, poster_path }) => (
 								<Col xs={6} md={3} lg={2} key={id}>
 									<Link to={`/movie/${id}/${titleLink(title)}`}>
 										<img

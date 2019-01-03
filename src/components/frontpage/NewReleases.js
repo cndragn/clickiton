@@ -22,7 +22,7 @@ class NewReleases extends Component {
 					<div className="container">
 						<div className="featured-title">
 							<h2>New Releases</h2>
-							<LinkContainer to="/new-releases">
+							<LinkContainer to={{ pathname: '/new-releases', state: { movies: this.props.movies } }}>
 								<Button>View All</Button>
 							</LinkContainer>
 						</div>
