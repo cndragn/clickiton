@@ -8,6 +8,7 @@ import AllFeaturedMovies from './AllNewReleases';
 import AllComingSoon from './AllComingSoon';
 import Movie from './movie/Movie';
 import Footer from './Footer';
+import Search from './Search';
 
 /* <Route path="/movie/:id/:title" render={(props) => <Movie {...props} key={this.props.location.key} />} /> */
 
@@ -25,6 +26,7 @@ class App extends Component {
 							path="/movie/:id/:title"
 							render={(props) => <Movie {...props} key={props.match.params.id || 'empty'} />}
 						/>
+						<Route path="/search" component={Search} />
 						<Footer />
 					</div>
 				</ScrollToTop>
