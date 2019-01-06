@@ -36,7 +36,7 @@ class Videos extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Trailers</h2>
+				{this.selectVids().length > 0 ? <h2>Trailers</h2> : ''}
 				<div className="vids">
 					{this.selectVids().map(({ key }) => <Trailer key={key} id={key} color={this.props.color} />)}
 				</div>

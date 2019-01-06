@@ -40,7 +40,7 @@ class Recommended extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Similar Movies</h2>
+				{this.selectMovies().length > 0 ? <h2>Similar Movies</h2> : ''}
 				<div className="recommended">
 					{this.selectMovies().map(({ id, title, poster_path, overview }) => (
 						<div className="card" key={id}>

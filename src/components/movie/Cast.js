@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-class Videos extends Component {
+class Cast extends Component {
 	constructor(props) {
 		super(props);
 
@@ -26,7 +26,7 @@ class Videos extends Component {
 	topCast() {
 		let cast = [];
 		Object(this.state.cast).forEach(function(person, i) {
-			if (person.profile_path && i < 6) {
+			if (i < 6) {
 				cast.push(person);
 			}
 		});
@@ -36,7 +36,7 @@ class Videos extends Component {
 	render() {
 		return (
 			<div className="cast-crew">
-				<h2>Cast</h2>
+				{this.topCast().length > 0 ? <h2>Cast</h2> : ''}
 				<div className="cast">
 					<div className="cards">
 						{this.topCast().map(({ cast_id, name, character, profile_path }) => (
@@ -53,4 +53,4 @@ class Videos extends Component {
 	}
 }
 
-export default Videos;
+export default Cast;
