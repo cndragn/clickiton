@@ -5,4 +5,24 @@
 		margin: 10px 0;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
+
+	.poster-wrap {
+		position: relative;
+	}
+	p {
+		position: absolute;
+		top: 25%;
+		left: 0;
+		font-size: 1.5rem;
+		color: #1c1c1c;
+		padding: 0 23px;
+		height: 100%;
+	}
+
+	@media only screen and (min-width: 768px) {
+		p {
+			font-size: 1.7rem;
+			padding: 0 39px;
+		}
+	}
 }
