@@ -9,8 +9,8 @@ class Main extends Component {
 		return (
 			<div className="main">
 				<Videos id={id} color={this.props.color} />
-				<Cast id={id} />
-				<Recommended id={id} />
+				<Cast id={id} color={this.props.color} />
+				<Recommended id={id} color={this.props.color} />
 			</div>
 		);
 	}

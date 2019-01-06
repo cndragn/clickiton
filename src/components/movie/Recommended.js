@@ -5,8 +5,6 @@ import { titleLink } from '../../helpers/movies';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
-// https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
-
 class Recommended extends Component {
 	constructor(props) {
 		super(props);
@@ -38,6 +36,12 @@ class Recommended extends Component {
 	}
 
 	render() {
+		const linkStyle = {
+			color: this.props.color
+		};
+		const borderStyle = {
+			color: this.props.color
+		};
 		return (
 			<div>
 				{this.selectMovies().length > 0 ? <h2>Similar Movies</h2> : ''}
@@ -45,11 +49,17 @@ class Recommended extends Component {
 					{this.selectMovies().map(({ id, title, poster_path, overview }) => (
 						<div className="card" key={id}>
 							<div className="poster">
-								<img src={`http://image.tmdb.org/t/p/w92/${poster_path}`} alt={title} />
+								<Link to={`/movie/${id}/${titleLink(title)}`}>
+									<img
+										src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
+										alt={title}
+										style={borderStyle}
+									/>
+								</Link>
 							</div>
 							<div className="desc">
-								<Link to={`/movie/${id}/${titleLink(title)}`}>
-									<h4>{title}</h4>
+								<Link to={`/movie/${id}/${titleLink(title)}`} style={linkStyle}>
+									<h4 className="trans">{title}</h4>
 								</Link>
 								<p>{overview}</p>
 							</div>

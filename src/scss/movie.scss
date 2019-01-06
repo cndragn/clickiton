@@ -10,6 +10,10 @@
 	margin-top: 50px;
 	color: $white;
 	background-color: rgba($black, 0.7);
+
+	a:hover {
+		text-decoration: underline;
+	}
 	.movie-header {
 		display: flex;
 		flex-wrap: wrap;
