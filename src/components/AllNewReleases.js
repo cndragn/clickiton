@@ -17,6 +17,7 @@ class AllFeaturedMovies extends Component {
 				if (item.release_date.slice(0, 4) > 2016) {
 					movie.push(item);
 				}
+				return 0;
 			});
 			this.setState({ movies: movie });
 		});

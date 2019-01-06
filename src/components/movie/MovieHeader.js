@@ -29,6 +29,19 @@ class MovieHeader extends Component {
 		return cast;
 	}
 
+	poster() {
+		if (this.props.movie.poster_path) {
+			return (
+				<div className="poster">
+					<img
+						alt={this.props.movie.title}
+						src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}
+					/>
+				</div>
+			);
+		}
+	}
+
 	render() {
 		const releaseDate = new Date(this.props.releaseDate);
 		const genres = this.props.genres;
@@ -36,12 +49,7 @@ class MovieHeader extends Component {
 		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 		return (
 			<div className="movie-header">
-				<div className="poster">
-					<img
-						alt={this.props.movie.title}
-						src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}
-					/>
-				</div>
+				{this.poster()}
 				<div className="movie-details">
 					<h1>
 						{this.props.movie.title} ({releaseDate.toLocaleDateString('en-US', DATE_YEAR)})

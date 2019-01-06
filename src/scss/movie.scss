@@ -100,8 +100,10 @@
 	.movie {
 		.movie-header {
 			flex-wrap: nowrap;
+			.poster,
 			.movie-details {
-				width: 50%;
+				// width: 50%;
+				flex: 1;
 			}
 		}
 		.main {
