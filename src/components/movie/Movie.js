@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import { ColorExtractor } from 'react-color-extractor';
 import MovieHeader from './MovieHeader';
 import Main from './Main';
+import { luma } from '../../helpers/luma';
+
 import movieImg from '../../images/pexels-photo-925744a.png';
-// import noImg from '../../images/no-image.png';
+
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Movie extends Component {
@@ -28,11 +31,6 @@ class Movie extends Component {
 		this.setState({ id });
 		axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then((res) => {
 			const movie = res.data;
-			// if (movie.poster_path === null) {
-			// 	movie.poster_path = noImg;
-			// } else {
-			// movie.poster_path = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
-			// }
 			this.setState({ movie });
 
 			let backdrop = '';
@@ -69,6 +67,8 @@ class Movie extends Component {
 	render(props) {
 		const { movie, crew } = this.state;
 		const accent = this.state.colors[0];
+		luma(accent);
+		console.log(accent);
 		document.title = movie.title;
 
 		return (
