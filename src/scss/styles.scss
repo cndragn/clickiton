@@ -18,19 +18,6 @@ body {
 	padding: 30px 15px;
 }
 
-.navbar-brand,
-.logo {
-	font-family: $font-logo;
-	color: $primary;
-	&:active,
-	&:visited {
-		color: $primary;
-	}
-}
-.navbar-brand {
-	font-size: 2.6rem;
-}
-
 h2 {
 	margin-top: 0;
 	padding-top: 10px;
