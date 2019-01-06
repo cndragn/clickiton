@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ColorExtractor } from 'react-color-extractor';
 import MovieHeader from './MovieHeader';
 import Main from './Main';
-import { luma } from '../../helpers/luma';
+// import { luma } from '../../helpers/luma';
 
 import movieImg from '../../images/pexels-photo-925744a.png';
 
@@ -67,8 +67,7 @@ class Movie extends Component {
 	render(props) {
 		const { movie, crew } = this.state;
 		const accent = this.state.colors[0];
-		luma(accent);
-		console.log(accent);
+		// luma(accent);
 		document.title = movie.title;
 
 		return (
