@@ -11,8 +11,14 @@ class AllFeaturedMovies extends Component {
 
 	componentDidMount() {
 		axios.get(fetchFeatured()).then((res) => {
+			let movie = [];
 			const movies = res.data.results;
-			this.setState({ movies });
+			movies.map((item) => {
+				if (item.release_date.slice(0, 4) > 2016) {
+					movie.push(item);
+				}
+			});
+			this.setState({ movies: movie });
 		});
 	}
 
