@@ -3,6 +3,7 @@ import { Route, HashRouter as Router } from 'react-router-dom';
 import ScrollToTop from '../helpers/scrollToTop';
 
 import Nav from './Navigation';
+import SearchBar from './SearchBar.js';
 import Home from './FrontPage';
 import AllFeaturedMovies from './AllNewReleases';
 import AllComingSoon from './AllComingSoon';
@@ -19,6 +20,7 @@ class App extends Component {
 				<ScrollToTop>
 					<div>
 						<Nav />
+						<SearchBar />
 						<Route exact path="/" component={Home} />
 						<Route path="/new-releases" component={AllFeaturedMovies} />
 						<Route path="/coming-soon" component={AllComingSoon} />
@@ -26,7 +28,10 @@ class App extends Component {
 							path="/movie/:id/:title"
 							render={(props) => <Movie {...props} key={props.match.params.id || 'empty'} />}
 						/>
-						<Route path="/search" component={Search} />
+						<Route
+							path="/search/:query"
+							render={(props) => <Search {...props} key={props.match.params.query || 'empty'} />}
+						/>
 						<Footer />
 					</div>
 				</ScrollToTop>

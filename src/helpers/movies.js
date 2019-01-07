@@ -21,6 +21,7 @@ export const movieList = ({ props }, num) => {
 
 //remove spaces and set to lower for use in url
 export function titleLink(link) {
+	link = link.replace(/[^\w ]/g, '');
 	return link.replace(/\s+/g, '-').toLowerCase();
 }
 

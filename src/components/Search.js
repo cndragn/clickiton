@@ -19,10 +19,11 @@ class Search extends Component {
 	}
 
 	componentDidMount() {
-		// const { id } = this.props.id;
+		console.log(this.props.match.params.query);
+		const term = this.props.match.params.query;
 		axios
 			.get(
-				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=cool+world&include_adult=false&region=US`
+				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false&region=US`
 			)
 			.then((res) => {
 				const results = res.data.results;
