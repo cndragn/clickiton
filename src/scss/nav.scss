@@ -23,9 +23,11 @@
 		.active a {
 			color: $primary;
 			background-color: transparent;
-			&:hover {
+			&:hover,
+			&:active,
+			&:focus {
 				color: $primary;
-				background-color: $black;
+				background-color: transparent;
 			}
 		}
 	}
