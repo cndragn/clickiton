@@ -1,8 +1,30 @@
 .searchbar {
 	margin-top: 111px;
+	form {
+		display: flex;
+		align-items: center;
+		background-color: $white;
+	}
+	.glyphicon {
+		padding: 0 15px;
+		cursor: pointer;
+	}
+	.glyphicon-remove {
+		display: none;
+		&:hover {
+			display: block;
+		}
+	}
 	input[type="text"] {
 		width: 100%;
 		padding: 10px 8px;
+		border: 0;
+		&:focus {
+			outline: none;
+		}
+		&:hover ~ .glyphicon-remove {
+			display: block;
+		}
 	}
 }
 

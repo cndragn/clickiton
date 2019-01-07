@@ -25,9 +25,6 @@ class Navigation extends React.Component {
 							<LinkContainer to="/coming-soon">
 								<NavItem eventKey={3}>Coming Soon</NavItem>
 							</LinkContainer>
-							<LinkContainer to="/search">
-								<NavItem eventKey={4}>Search</NavItem>
-							</LinkContainer>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
