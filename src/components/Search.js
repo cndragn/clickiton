@@ -31,6 +31,17 @@ class Search extends Component {
 			});
 	}
 
+	noResults() {
+		if (this.state.movies.length < 1) {
+			return (
+				<div className="no-results">
+					<h2>No Results Found</h2>
+					<h2>Please try again!</h2>
+				</div>
+			);
+		}
+	}
+
 	render() {
 		const { movies } = this.state;
 		return (
@@ -52,6 +63,7 @@ class Search extends Component {
 							</Col>
 						))}
 					</div>
+					{this.noResults()}
 				</div>
 			</div>
 		);

@@ -8,6 +8,10 @@ export function fetchComingSoon() {
 	return `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=US`;
 }
 
+export function trendingMovies() {
+	return `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`;
+}
+
 // list of first n movies
 export const movieList = ({ props }, num) => {
 	let movieArr = [];

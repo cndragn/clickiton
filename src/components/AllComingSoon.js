@@ -13,14 +13,6 @@ class AllComingSoon extends Component {
 	componentDidMount() {
 		axios.get(fetchComingSoon()).then((res) => {
 			const movies = res.data.results;
-			// movies.map((movie) => {
-			// 	if (movie.poster_path === null) {
-			// 		movie.poster_path = noImg;
-			// 	} else {
-			// 		movie.poster_path = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
-			// 	}
-			// 	return 0;
-			// });
 			this.setState({ movies });
 		});
 	}
