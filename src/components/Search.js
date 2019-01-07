@@ -14,7 +14,6 @@ class Search extends Component {
 
 		this.state = {
 			movies: []
-			// id: this.props.id
 		};
 	}
 

@@ -20,6 +20,7 @@ class SearchBar extends Component {
 		event.preventDefault();
 		if (this.state.value !== '') {
 			this.props.history.push(`/search/${titleLink(this.state.value)}`);
+			this.setState({ value: '' });
 		}
 	}
 
