@@ -10,7 +10,7 @@ Movie web app that allows users to view new releases, and detaiils for each movi
  - Randomized New Releases and Coming Soon movies on main with initial movie as background image
  - Single movie page features accent colour unique to each movie based on colours in the background image
 
- ![ClickItOn](https://raw.githubusercontent.com/cndragn/clickiton/master/src/images/clickiton.png)
+ ![ClickItOn](https://raw.githubusercontent.com/cndragn/clickiton/blob/master/clickiton.png)
 
  ## Working On
   - Search feature
