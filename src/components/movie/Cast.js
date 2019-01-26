@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import blankProfilePic from '../../images/blank-profile.jpg';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Cast extends Component {
@@ -33,6 +34,14 @@ class Cast extends Component {
 		return cast;
 	}
 
+	profilePic(profile_path, name) {
+		if (profile_path) {
+			return <img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />;
+		} else {
+			return <img src={blankProfilePic} alt={name} />;
+		}
+	}
+
 	render() {
 		return (
 			<div className="cast-crew">
@@ -41,7 +50,7 @@ class Cast extends Component {
 					<div className="cards">
 						{this.topCast().map(({ cast_id, name, character, profile_path }) => (
 							<div className="card" key={cast_id}>
-								<img src={`http://image.tmdb.org/t/p/w185/${profile_path}`} alt={name} />
+								{this.profilePic(profile_path, name)}
 								<p>{name}</p>
 								<p>{character}</p>
 							</div>
