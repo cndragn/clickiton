@@ -42,17 +42,24 @@ class MovieHeader extends Component {
 		}
 	}
 
-	render() {
+	releaseYear() {
 		const releaseDate = new Date(this.props.releaseDate);
-		const genres = this.props.genres;
 		const DATE_YEAR = { year: 'numeric' };
+		if (this.props.releaseDate) {
+			return `(${releaseDate.toLocaleDateString('en-US', DATE_YEAR)})`;
+		}
+	}
+
+	render() {
+		const genres = this.props.genres;
+
 		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 		return (
 			<div className="movie-header">
 				{this.poster()}
 				<div className="movie-details">
 					<h1>
-						{this.props.movie.title} ({releaseDate.toLocaleDateString('en-US', DATE_YEAR)})
+						{this.props.movie.title} {this.releaseYear()}
 					</h1>
 					<div className="stats">
 						<p>
