@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import 'lightbox-react/style.css';
-import Trailer from './Trailer';
+import ModalVideo from 'react-modal-video';
+import { Glyphicon } from 'react-bootstrap';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -11,35 +11,59 @@ class Videos extends Component {
 
 		this.state = {
 			videos: [],
-			id: this.props.id
+			trailer: '',
+			id: this.props.id,
+			isOpen: false
 		};
+		this.openModal = this.openModal.bind(this);
 	}
 
 	componentDidMount() {
 		const { id } = this.props.id;
 		axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then((res) => {
-			const release = res.data.results;
-			this.setState({ videos: release });
+			const trailer = res.data.results;
+			this.setState({ trailer });
 		});
 	}
 
-	selectVids() {
-		let movieArr = [];
-		Object(this.state.videos).forEach(function(movie, i) {
-			if (i < 2) {
-				movieArr.push(movie);
-			}
-		});
-		return movieArr;
+	openModal() {
+		this.setState({ isOpen: true });
 	}
 
 	render() {
+		const { trailer } = this.state;
 		return (
 			<div>
-				{this.selectVids().length > 0 ? <h2>Trailers</h2> : ''}
-				<div className="vids">
-					{this.selectVids().map(({ key }) => <Trailer key={key} id={key} color={this.props.color} />)}
-				</div>
+				{trailer.length > 0 ? (
+					<div>
+						<h2>Trailer</h2>
+						<div className="vids">
+							<div className="trailer">
+								<ModalVideo
+									channel="youtube"
+									isOpen={this.state.isOpen}
+									videoId={trailer[0].key}
+									onClose={() => this.setState({ isOpen: false })}
+									autoplay={1}
+								/>
+								<div className="img-box">
+									<img
+										alt="stuff"
+										src={`https://img.youtube.com/vi/${trailer[0].key}/0.jpg`}
+										onClick={this.openModal}
+									/>
+								</div>
+								<Glyphicon
+									glyph="play-circle"
+									style={{ color: this.props.color }}
+									onClick={() => this.setState({ isOpen: true })}
+								/>
+							</div>
+						</div>
+					</div>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}
