@@ -62,10 +62,25 @@ class Movie extends Component {
 		});
 	}
 
+	displayHdr() {
+		const { movie, crew, movieRating, releaseDate, genres } = this.state;
+		if (this.state.backdrop && this.state.movie.poster_path) {
+			return (
+				<MovieHeader
+					movie={movie}
+					crew={crew}
+					movieRating={movieRating}
+					releaseDate={releaseDate}
+					genres={genres}
+				/>
+			);
+		}
+	}
+
 	getColors = (colors) => this.setState((state) => ({ colors: [ ...state.colors, ...colors ] }));
 
 	render(props) {
-		const { movie, crew } = this.state;
+		const { movie } = this.state;
 		const accent = this.state.colors[0];
 		// luma(accent);
 		document.title = movie.title;
@@ -82,13 +97,7 @@ class Movie extends Component {
 				</ColorExtractor>
 				<div className="movie-bg">
 					<div className="movie">
-						<MovieHeader
-							movie={movie}
-							crew={crew}
-							movieRating={this.state.movieRating}
-							releaseDate={this.state.releaseDate}
-							genres={this.state.genres}
-						/>
+						{this.displayHdr()}
 						<div
 							className="content"
 							style={{
