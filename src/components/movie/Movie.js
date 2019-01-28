@@ -4,7 +4,6 @@ import axios from 'axios';
 import { ColorExtractor } from 'react-color-extractor';
 import MovieHeader from './MovieHeader';
 import Main from './Main';
-// import { luma } from '../../helpers/luma';
 
 import movieImg from '../../images/pexels-photo-925744a.png';
 

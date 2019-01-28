@@ -8,6 +8,7 @@ import Home from './FrontPage';
 import AllFeaturedMovies from './AllNewReleases';
 import AllComingSoon from './AllComingSoon';
 import Movie from './movie/Movie';
+import Person from './person/Person';
 import Footer from './Footer';
 import Search from './Search';
 
@@ -27,6 +28,10 @@ class App extends Component {
 						<Route
 							path="/movie/:id/:title"
 							render={(props) => <Movie {...props} key={props.match.params.id || 'empty'} />}
+						/>
+						<Route
+							path="/person/:id/:title"
+							render={(props) => <Person {...props} key={props.match.params.id || 'empty'} />}
 						/>
 						<Route
 							path="/search/:query"
