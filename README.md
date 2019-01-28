@@ -6,40 +6,10 @@ CI/CD Build: https://travis-ci.com/cndragn/clickiton
 
 ## Description
 
-Movie web app that allows users to view new releases, and detaiils for each movie.
- - Randomized New Releases and Coming Soon movies on main with initial movie as background image
- - Single movie page features accent colour unique to each movie based on colours in the background image
+Movie web app that allows users to view new and upcoming movies, search for movies, view cast member bios and the latest in entertainment news.
+
 
  ![ClickItOn](https://raw.githubusercontent.com/cndragn/clickiton/master/clickiton.png)
-
- ## Working On
-  - Search feature
-  - Flesh out details on movie page
-    - View trailers
-    - Movie details
-    - Actor information
-  - Link to full news articles from main
-  - User login
-  - Allow users to:
-    - create and view profiles
-    - connect with other users
-    - create list of movies seen, to see
-    - write, edit and delete own reviews
-    - read other users reviews
-    - flag reviews
-  - Allow admin to:
-    - edit and delete reviews
-    - view flagged reviews
-    - delete users
-
-  - Social aspect 
-    - timeline of movies connections have viewed
-    - add movies to timeline
-    - make comments on timeline
-
-  - Expand to tv / music
-
-
 
 ## Technologies Used
 
