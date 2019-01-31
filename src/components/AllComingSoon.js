@@ -14,6 +14,7 @@ class AllComingSoon extends Component {
 		axios.get(fetchComingSoon()).then((res) => {
 			const movies = res.data.results;
 			this.setState({ movies });
+			console.log(movies);
 		});
 	}
 

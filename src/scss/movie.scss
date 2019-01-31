@@ -131,4 +131,14 @@
 	.vids {
 		justify-content: space-around;
 	}
+	.movie {
+		.main {
+			max-width: 99%;
+		}
+	}
+	.trailer {
+		img {
+			left: 55%;
+		}
+	}
 }
