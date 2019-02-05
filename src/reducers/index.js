@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import newsReducer from './newsReducer';
 
 export default combineReducers({
-	placeholder: () => 'stuff'
+	articles: newsReducer
 });

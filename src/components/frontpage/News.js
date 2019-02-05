@@ -1,24 +1,19 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchNews } from '../../actions';
+
 import { Col } from 'react-bootstrap';
 
-const API_KEY = `${process.env.REACT_APP_NEWS_API_KEY}`;
-
 class News extends React.Component {
-	state = {
-		news: []
-	};
-
 	componentDidMount() {
-		axios.get(`https://newsapi.org/v2/everything?q=movie+film+actor+actress&apiKey=${API_KEY}`).then((res) => {
-			const news = res.data.articles;
-			this.setState({ news });
-		});
+		this.props.fetchNews();
 	}
 
 	newsLimit() {
+		const { articles } = this.props;
+
 		let news = [];
-		Object(this.state.news).forEach(function(article, i) {
+		Object(articles).forEach(function(article, i) {
 			if (i < 4) {
 				news.push(article);
 			}
@@ -57,4 +52,8 @@ class News extends React.Component {
 	}
 }
 
-export default News;
+const mapStateToProps = (state) => {
+	return { articles: state.articles };
+};
+
+export default connect(mapStateToProps, { fetchNews })(News);
