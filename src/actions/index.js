@@ -25,3 +25,13 @@ export const fetchNewReleases = () => async (dispatch) => {
 		}
 	});
 };
+
+export const fetchComingSoon = () => async (dispatch) => {
+	const response = await movieApi.get(`movie/upcoming?api_key=${MOVIE_KEY}&language=en-US&page=1&region=US`);
+	dispatch({
+		type: 'FETCH_COMING_SOON',
+		payload: {
+			movies: response.data.results
+		}
+	});
+};

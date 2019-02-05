@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
-import { movieList, titleLink } from '../../helpers/movies';
+import { connect } from 'react-redux';
+import { fetchComingSoon } from '../../actions';
+
+import { titleLink } from '../../helpers/movies';
 import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class ComingSoon extends Component {
-	constructor(props) {
-		super(props);
-		this.movieList = movieList.bind(this);
+	componentDidMount() {
+		this.props.fetchComingSoon();
 	}
 
+	movieList = (num) => {
+		const { upcoming } = this.props;
+		let movieArr = [];
+		Object(upcoming).forEach(function(movie, i) {
+			if (movie.poster_path !== null && movieArr.length < num) {
+				movieArr.push(movie);
+			}
+		});
+		return movieArr;
+	};
+
 	render() {
+		console.log(this.props);
 		return (
 			<div className="featured coming-soon">
 				<div className="container">
@@ -22,7 +36,7 @@ class ComingSoon extends Component {
 					</div>
 
 					<div className="show-grid auto-clear">
-						{movieList(this, 6).map(({ id, title, poster_path }) => (
+						{this.movieList(6).map(({ id, title, poster_path }) => (
 							<Col xs={4} md={2} key={id}>
 								<Link to={`/movie/${id}/${titleLink(title)}`}>
 									<img
@@ -40,4 +54,10 @@ class ComingSoon extends Component {
 	}
 }
 
-export default ComingSoon;
+const mapStateToProps = (state) => {
+	return {
+		upcoming: state.comingSoon
+	};
+};
+
+export default connect(mapStateToProps, { fetchComingSoon })(ComingSoon);
