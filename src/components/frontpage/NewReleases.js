@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchNowPlaying } from '../../actions';
+
 import { movieList, titleLink } from '../../helpers/movies';
 import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,7 +13,12 @@ class NewReleases extends Component {
 		this.movieList = movieList.bind(this);
 	}
 
+	componentDidMount() {
+		this.props.fetchNowPlaying();
+	}
+
 	render() {
+		console.log(this.props.movies);
 		return (
 			<div
 				className="featured-bg"
@@ -46,4 +54,8 @@ class NewReleases extends Component {
 	}
 }
 
-export default NewReleases;
+const mapStateToProps = (state) => {
+	return { movies: state.nowPlaying };
+};
+
+export default connect(mapStateToProps, { fetchNowPlaying })(NewReleases);
