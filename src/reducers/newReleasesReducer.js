@@ -1,7 +1,6 @@
 export default (state = [], action) => {
-	console.log(action.type);
 	switch (action.type) {
-		case 'FETCH_NOW_PLAYING':
+		case 'FETCH_NEW_RELEASES':
 			return action.payload.movies;
 		default:
 			return state;

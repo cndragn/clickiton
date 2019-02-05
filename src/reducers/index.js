@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import newsReducer from './newsReducer';
-import nowPlayingReducer from './nowPlaying';
+import newReleasesReducer from './newReleasesReducer';
+import backdropReducer from './backdropReducer';
 
 export default combineReducers({
 	articles: newsReducer,
-	nowPlaying: nowPlayingReducer
+	newReleases: newReleasesReducer,
+	backdrop: backdropReducer
 });

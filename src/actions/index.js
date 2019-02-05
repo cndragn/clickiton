@@ -15,12 +15,13 @@ export const fetchNews = () => async (dispatch) => {
 	});
 };
 
-export const fetchNowPlaying = () => async (dispatch) => {
+export const fetchNewReleases = () => async (dispatch) => {
 	const response = await movieApi.get(`movie/now_playing?api_key=${MOVIE_KEY}&language=en-US&page=1&region=US`);
 	dispatch({
-		type: 'FETCH_NOW_PLAYING',
+		type: 'FETCH_NEW_RELEASES',
 		payload: {
-			movies: response.data.results
+			movies: response.data.results,
+			background: response.data.results
 		}
 	});
 };

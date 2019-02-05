@@ -32,7 +32,6 @@ class SearchBar extends Component {
 		this.setState({ value: '' });
 	}
 	render() {
-		console.log(this.state.value);
 		return (
 			<div className="searchbar">
 				<form onSubmit={this.handleSubmit}>
