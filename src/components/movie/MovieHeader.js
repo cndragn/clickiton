@@ -1,17 +1,47 @@
 import React, { Component } from 'react';
 import { runtime } from '../../helpers/movies';
+import axios from 'axios';
+
+const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class MovieHeader extends Component {
+	state = {
+		movieRating: '',
+		releaseDate: '',
+		crew: [],
+		id: this.props.id
+	};
+
+	componentDidMount() {
+		const { id } = this.state.id;
+
+		axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`).then((res) => {
+			const release = res.data;
+			this.setState({ crew: release.crew });
+		});
+
+		axios.get(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${API_KEY}`).then((res) => {
+			const release = res.data.results;
+			release.map((item) => {
+				if (item.iso_3166_1 === 'US' && this.state.release !== null) {
+					this.setState({ releaseDate: item.release_dates[0].release_date });
+					this.setState({ movieRating: item.release_dates[0].certification });
+				}
+				return 0;
+			});
+		});
+	}
+
 	rating(value) {
 		if (value) {
-			return this.props.movieRating;
+			return this.state.movieRating;
 		}
 		return 'Not Rated';
 	}
 
 	director() {
 		let cast = [];
-		Object(this.props.crew).forEach(function(person, i) {
+		Object(this.state.crew).forEach(function(person, i) {
 			if (person.job === 'Director') {
 				cast.push(person);
 			}
@@ -21,7 +51,7 @@ class MovieHeader extends Component {
 
 	writer() {
 		let cast = [];
-		Object(this.props.crew).forEach(function(person, i) {
+		Object(this.state.crew).forEach(function(person, i) {
 			if (person.job === 'Screenplay') {
 				cast.push(person);
 			}
@@ -30,45 +60,43 @@ class MovieHeader extends Component {
 	}
 
 	poster() {
-		if (this.props.movie.poster_path) {
+		const { movie } = this.props;
+		if (movie.poster_path) {
 			return (
 				<div className="poster">
-					<img
-						alt={this.props.movie.title}
-						src={`https://image.tmdb.org/t/p/w342${this.props.movie.poster_path}`}
-					/>
+					<img alt={movie.title} src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
 				</div>
 			);
 		}
 	}
 
 	releaseYear() {
-		const releaseDate = new Date(this.props.releaseDate);
+		const releaseDate = new Date(this.state.releaseDate);
 		const DATE_YEAR = { year: 'numeric' };
-		if (this.props.releaseDate) {
+		if (this.state.releaseDate) {
 			return `(${releaseDate.toLocaleDateString('en-US', DATE_YEAR)})`;
 		}
 	}
 
 	render() {
-		const genres = this.props.genres;
+		const { movie } = this.props;
+		const genres = movie.genres;
 
-		// const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 		return (
 			<div className="movie-header">
 				{this.poster()}
 				<div className="movie-details">
 					<h1>
-						{this.props.movie.title} {this.releaseYear()}
+						{movie.title} {this.releaseYear()}
 					</h1>
 					<div className="stats">
 						<p>
-							{this.rating(this.props.movieRating)} | {runtime(this.props.movie.runtime)}
+							{this.rating(this.state.movieRating)} | {runtime(movie.runtime)}
 							<br />
 							{genres.map((genre, index) => (
 								<span key={genre.id}>
 									{genre.name}
-									{index < this.props.genres.length - 1 ? ', ' : ''}
+									{index < genres.length - 1 ? ', ' : ''}
 								</span>
 							))}
 						</p>
@@ -89,7 +117,7 @@ class MovieHeader extends Component {
 							))}
 						</p>
 					</div>
-					<div className="description">{this.props.movie.overview}</div>
+					<div className="description">{movie.overview}</div>
 				</div>
 			</div>
 		);
