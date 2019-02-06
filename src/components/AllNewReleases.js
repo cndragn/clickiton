@@ -1,30 +1,18 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { fetchFeatured, tidyLink } from '../helpers/movies';
+import { connect } from 'react-redux';
+import { fetchNewReleases } from '../actions';
+
+import { tidyLink } from '../helpers/movies';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 
-class AllFeaturedMovies extends Component {
-	state = {
-		movies: []
-	};
-
+class AllNewReleases extends Component {
 	componentDidMount() {
-		axios.get(fetchFeatured()).then((res) => {
-			let movie = [];
-			const movies = res.data.results;
-			movies.map((item) => {
-				if (item.release_date.slice(0, 4) > 2016) {
-					movie.push(item);
-				}
-				return 0;
-			});
-			this.setState({ movies: movie });
-		});
+		this.props.fetchNewReleases();
 	}
 
 	render() {
-		const movies = this.state.movies;
+		const { movies } = this.props;
 		document.title = 'ClickItOn: New Releases';
 		return (
 			<div>
@@ -51,4 +39,10 @@ class AllFeaturedMovies extends Component {
 	}
 }
 
-export default AllFeaturedMovies;
+const mapStateToProps = (state) => {
+	return {
+		movies: state.newReleases
+	};
+};
+
+export default connect(mapStateToProps, { fetchNewReleases })(AllNewReleases);

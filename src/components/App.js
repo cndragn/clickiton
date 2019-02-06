@@ -5,7 +5,7 @@ import ScrollToTop from '../helpers/scrollToTop';
 import Nav from './Navigation';
 import SearchBar from './SearchBar.js';
 import Home from './FrontPage';
-import AllFeaturedMovies from './AllNewReleases';
+import AllNewReleases from './AllNewReleases';
 import AllComingSoon from './AllComingSoon';
 import Movie from './movie/Movie';
 import Person from './person/Person';
@@ -23,7 +23,7 @@ class App extends Component {
 						<Nav />
 						<SearchBar />
 						<Route exact path="/" component={Home} />
-						<Route path="/new-releases" component={AllFeaturedMovies} />
+						<Route path="/new-releases" component={AllNewReleases} />
 						<Route path="/coming-soon" component={AllComingSoon} />
 						<Route
 							path="/movie/:id/:title"

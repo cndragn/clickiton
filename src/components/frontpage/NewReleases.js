@@ -24,7 +24,7 @@ class NewReleases extends Component {
 	};
 
 	render() {
-		const { movies, backdrop } = this.props;
+		const { backdrop } = this.props;
 		return (
 			<div
 				className="featured-bg"
@@ -36,7 +36,7 @@ class NewReleases extends Component {
 					<div className="container">
 						<div className="featured-title">
 							<h2>New Releases</h2>
-							<LinkContainer to={{ pathname: '/new-releases', state: { movies } }}>
+							<LinkContainer to="/new-releases">
 								<Button>View All</Button>
 							</LinkContainer>
 						</div>
