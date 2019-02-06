@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { fetchComingSoon, tidyLink } from '../helpers/movies';
+import { connect } from 'react-redux';
+import { fetchComingSoon } from '../actions';
+
+import { tidyLink } from '../helpers/movies';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import noImg from '../images/no-image2.png';
 
 class AllComingSoon extends Component {
-	state = {
-		movies: []
-	};
-
 	componentDidMount() {
-		axios.get(fetchComingSoon()).then((res) => {
-			const movies = res.data.results;
-			this.setState({ movies });
-			console.log(movies);
-		});
+		this.props.fetchComingSoon();
 	}
 
 	render() {
-		const movies = this.state.movies;
+		const { movies } = this.props;
 		document.title = 'ClickItOn: Coming Soon';
 		return (
 			<div>
@@ -47,4 +41,10 @@ class AllComingSoon extends Component {
 	}
 }
 
-export default AllComingSoon;
+const mapStateToProps = (state) => {
+	return {
+		movies: state.comingSoon
+	};
+};
+
+export default connect(mapStateToProps, { fetchComingSoon })(AllComingSoon);
