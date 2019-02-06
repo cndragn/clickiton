@@ -13,12 +13,12 @@ class Search extends Component {
 		super(props);
 
 		this.state = {
-			movies: []
+			movies: [],
+			rendered: false
 		};
 	}
 
 	componentDidMount() {
-		console.log(this.props.match.params.query);
 		const term = this.props.match.params.query;
 		axios
 			.get(
@@ -26,12 +26,14 @@ class Search extends Component {
 			)
 			.then((res) => {
 				const results = res.data.results;
-				this.setState({ movies: results });
+				this.setState({ movies: results, rendered: true });
 			});
 	}
 
 	noResults() {
-		if (this.state.movies.length < 1) {
+		const { movies, rendered } = this.state;
+		if (!rendered) return <div style={{ height: '250px' }} />;
+		if (movies.length < 1) {
 			return (
 				<div className="no-results">
 					<h2>No Results Found</h2>
@@ -44,8 +46,9 @@ class Search extends Component {
 	render() {
 		const { movies } = this.state;
 		return (
-			<div className="search">
+			<div className="flexible search">
 				<div className="container">
+					{this.noResults()}
 					{movies.length > 0 ? <h2>Search Results</h2> : ''}
 					<div className="show-grid auto-clear">
 						{movies.map(({ id, title, poster_path, release_date }) => (
@@ -62,7 +65,6 @@ class Search extends Component {
 							</Col>
 						))}
 					</div>
-					{this.noResults()}
 				</div>
 			</div>
 		);
