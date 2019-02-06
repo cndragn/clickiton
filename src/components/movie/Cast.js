@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import blankProfilePic from '../../images/blank-profile.jpg';
 // import { Link } from 'react-router-dom';
-// import { titleLink } from '../../helpers/movies';
+// import { tidyLink } from '../../helpers/movies';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -52,7 +52,7 @@ class Cast extends Component {
 					<div className="cards">
 						{this.topCast().map(({ cast_id, id, name, character, profile_path }) => (
 							<div className="card" key={cast_id}>
-								{/* <Link to={`/person/${id}/${titleLink(name)}`} /> */}
+								{/* <Link to={`/person/${id}/${tidyLink(name)}`} /> */}
 								{this.profilePic(profile_path, name)}
 								<p>{name}</p>
 								<p>{character}</p>

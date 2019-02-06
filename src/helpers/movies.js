@@ -12,42 +12,10 @@ export function trendingMovies() {
 	return `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`;
 }
 
-// list of first n movies
-export const movieList = ({ props }, num) => {
-	let movieArr = [];
-	Object(props.movies).forEach(function(movie, i) {
-		if (movie.poster_path !== null && movieArr.length < num) {
-			movieArr.push(movie);
-		}
-	});
-	return movieArr;
-};
-
 //remove spaces and set to lower for use in url
-export function titleLink(link) {
+export function tidyLink(link) {
 	link = link.replace(/[^\w ]/g, '');
 	return link.replace(/\s+/g, '-').toLowerCase();
-}
-
-//randomize movies
-export function shuffle(array) {
-	var currentIndex = array.length,
-		temporaryValue,
-		randomIndex;
-
-	// While there remain elements to shuffle...
-	while (0 !== currentIndex) {
-		// Pick a remaining element...
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-
-		// And swap it with the current element.
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
-
-	return array;
 }
 
 //format runtime of movie

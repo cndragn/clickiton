@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { fetchFeatured, titleLink } from '../helpers/movies';
+import { fetchFeatured, tidyLink } from '../helpers/movies';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 
@@ -34,7 +34,7 @@ class AllFeaturedMovies extends Component {
 						<div className="show-grid auto-clear">
 							{movies.map(({ id, title, poster_path }) => (
 								<Col xs={6} md={3} lg={2} key={id}>
-									<Link to={`/movie/${id}/${titleLink(title)}`}>
+									<Link to={`/movie/${id}/${tidyLink(title)}`}>
 										<img
 											alt={title}
 											title={title}

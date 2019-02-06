@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { fetchComingSoon, titleLink } from '../helpers/movies';
+import { fetchComingSoon, tidyLink } from '../helpers/movies';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import noImg from '../images/no-image2.png';
@@ -29,7 +29,7 @@ class AllComingSoon extends Component {
 						<div className="show-grid auto-clear">
 							{movies.map(({ id, title, poster_path }) => (
 								<Col xs={6} md={3} lg={2} key={id} className="poster-wrap">
-									<Link to={`/movie/${id}/${titleLink(title)}`}>
+									<Link to={`/movie/${id}/${tidyLink(title)}`}>
 										<img
 											alt={title}
 											title={title}

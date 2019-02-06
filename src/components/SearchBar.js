@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { titleLink } from '../helpers/movies';
+import { tidyLink } from '../helpers/movies';
 import { Glyphicon } from 'react-bootstrap';
 
 class SearchBar extends Component {
@@ -19,7 +19,7 @@ class SearchBar extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 		if (this.state.value !== '') {
-			this.props.history.push(`/search/${titleLink(this.state.value)}`);
+			this.props.history.push(`/search/${tidyLink(this.state.value)}`);
 			this.setState({ value: '' });
 		}
 	}

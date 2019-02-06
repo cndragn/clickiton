@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchComingSoon } from '../../actions';
 
-import { titleLink } from '../../helpers/movies';
+import { tidyLink } from '../../helpers/movies';
 import { Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -24,7 +24,6 @@ class ComingSoon extends Component {
 	};
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className="featured coming-soon">
 				<div className="container">
@@ -38,7 +37,7 @@ class ComingSoon extends Component {
 					<div className="show-grid auto-clear">
 						{this.movieList(6).map(({ id, title, poster_path }) => (
 							<Col xs={4} md={2} key={id}>
-								<Link to={`/movie/${id}/${titleLink(title)}`}>
+								<Link to={`/movie/${id}/${tidyLink(title)}`}>
 									<img
 										alt={title}
 										title={title}
