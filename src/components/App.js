@@ -12,8 +12,6 @@ import Person from './person/Person';
 import Footer from './Footer';
 import Search from './Search';
 
-/* <Route path="/movie/:id/:title" render={(props) => <Movie {...props} key={this.props.location.key} />} /> */
-
 class App extends Component {
 	render() {
 		return (

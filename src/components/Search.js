@@ -1,38 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchSearch } from '../actions';
 import { Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 
 import { tidyLink } from '../helpers/movies';
 import noImg from '../images/no-image2.png';
 
-const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
-
 class Search extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			movies: [],
-			rendered: false
-		};
-	}
-
 	componentDidMount() {
 		const term = this.props.match.params.query;
-		axios
-			.get(
-				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false&region=US`
-			)
-			.then((res) => {
-				const results = res.data.results;
-				this.setState({ movies: results, rendered: true });
-			});
+		this.props.fetchSearch(term);
 	}
 
 	noResults() {
-		const { movies, rendered } = this.state;
-		if (!rendered) return <div style={{ height: '250px' }} />;
+		const { movies } = this.props;
 		if (movies.length < 1) {
 			return (
 				<div className="no-results">
@@ -44,7 +26,7 @@ class Search extends Component {
 	}
 
 	render() {
-		const { movies } = this.state;
+		const { movies } = this.props;
 		return (
 			<div className="flexible search">
 				<div className="container">
@@ -71,4 +53,10 @@ class Search extends Component {
 	}
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+	return {
+		movies: state.searchTerm
+	};
+};
+
+export default connect(mapStateToProps, { fetchSearch })(Search);
