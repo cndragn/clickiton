@@ -47,3 +47,15 @@ export const fetchComingSoon = () => async (dispatch) => {
 		}
 	});
 };
+
+export const fetchMovie = (id, movieImg) => async (dispatch) => {
+	const response = await movieApi.get(`movie/${id}?api_key=${MOVIE_KEY}`);
+	dispatch({
+		type: 'FETCH_MOVIE',
+		movieImg,
+		payload: {
+			movie: response.data,
+			background: response.data
+		}
+	});
+};

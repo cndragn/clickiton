@@ -1,51 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchMovie } from '../../actions';
 import axios from 'axios';
 
 import { ColorExtractor } from 'react-color-extractor';
 import MovieHeader from './MovieHeader';
 import Main from './Main';
-
 import movieImg from '../../images/pexels-photo-925744a.png';
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Movie extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			movie: [],
-			movieRating: '',
-			releaseDate: '',
-			backdrop: '',
-			genres: [],
-			crew: [],
-			colors: [],
-			id: this.props.match.params
-		};
-	}
+	state = {
+		movieRating: '',
+		releaseDate: '',
+		crew: [],
+		colors: [],
+		id: this.props.match.params
+	};
 
 	componentDidMount() {
-		const { id } = this.props.match.params;
-		this.setState({ id });
-		axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then((res) => {
-			const movie = res.data;
-			this.setState({ movie });
+		const { id } = this.state.id;
+		this.props.fetchMovie(id, movieImg);
 
-			let backdrop = '';
-			if (movie.backdrop_path == null) {
-				backdrop = movieImg;
-			} else {
-				backdrop = `https://image.tmdb.org/t/p/w780/${res.data.backdrop_path}`;
-			}
-			this.setState({ backdrop });
-
-			this.setState({ genres: movie.genres });
-
-			axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`).then((res) => {
-				const release = res.data;
-				this.setState({ crew: release.crew });
-			});
+		axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`).then((res) => {
+			const release = res.data;
+			this.setState({ crew: release.crew });
 		});
 
 		// Release date, rating
@@ -61,16 +41,16 @@ class Movie extends Component {
 		});
 	}
 
-	displayHdr() {
-		const { movie, crew, movieRating, releaseDate, genres } = this.state;
-		if (this.state.backdrop && this.state.movie.poster_path) {
+	displayHdr(movie, backdrop) {
+		const { crew, movieRating, releaseDate } = this.state;
+		if (backdrop && movie.poster_path) {
 			return (
 				<MovieHeader
 					movie={movie}
 					crew={crew}
 					movieRating={movieRating}
 					releaseDate={releaseDate}
-					genres={genres}
+					genres={movie.genres}
 				/>
 			);
 		}
@@ -78,25 +58,23 @@ class Movie extends Component {
 
 	getColors = (colors) => this.setState((state) => ({ colors: [ ...state.colors, ...colors ] }));
 
-	render(props) {
-		const { movie } = this.state;
+	render() {
+		const { movie, backdrop } = this.props;
 		const accent = this.state.colors[0];
-		// luma(accent);
-		document.title = movie.title;
 
 		return (
 			<div
 				className="movieWrapper"
 				style={{
-					backgroundImage: `url(${this.state.backdrop})`
+					backgroundImage: `url(${backdrop})`
 				}}
 			>
 				<ColorExtractor getColors={(colors) => this.setState({ colors: colors })}>
-					<img className="hidden" alt={movie.title} src={this.state.backdrop} />
+					<img className="hidden" alt={movie.title} src={backdrop} />
 				</ColorExtractor>
 				<div className="movie-bg">
 					<div className="movie">
-						{this.displayHdr()}
+						{this.displayHdr(movie, backdrop)}
 						<div
 							className="content"
 							style={{
@@ -114,4 +92,10 @@ class Movie extends Component {
 	}
 }
 
-export default Movie;
+const mapStateToProps = (state) => {
+	return {
+		movie: state.movie,
+		backdrop: state.backdrop
+	};
+};
+export default connect(mapStateToProps, { fetchMovie })(Movie);
