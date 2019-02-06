@@ -6,14 +6,10 @@ import { tidyLink } from '../../helpers/movies';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Recommended extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			recommend: [],
-			id: this.props.id
-		};
-	}
+	state = {
+		recommend: [],
+		id: this.props.id
+	};
 
 	componentDidMount() {
 		const { id } = this.props.id;

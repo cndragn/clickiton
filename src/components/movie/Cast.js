@@ -7,22 +7,15 @@ import blankProfilePic from '../../images/blank-profile.jpg';
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Cast extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			videos: [],
-			cast: [],
-			crew: []
-		};
-	}
+	state = {
+		cast: []
+	};
 
 	componentDidMount() {
 		const { id } = this.props.id;
 		axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`).then((res) => {
 			const release = res.data;
 			this.setState({ cast: release.cast });
-			this.setState({ crew: release.crew });
 		});
 	}
 
