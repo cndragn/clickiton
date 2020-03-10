@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { tidyLink } from "../../helpers/movies";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -11,7 +13,6 @@ class Movie extends Component {
       id: "",
       person: [],
       credits: [],
-      movies: [],
       knownFor: []
     };
   }
@@ -41,7 +42,7 @@ class Movie extends Component {
             if (
               credit.character &&
               credit.poster_path &&
-              credit.original_title &&
+              credit.title &&
               credit.release_date
             ) {
               credits.push(credit);
@@ -49,17 +50,17 @@ class Movie extends Component {
             }
           })
         );
-
-        credits.sort((a, b) => (a.original_title > b.original_title ? 1 : -1));
+        credits.sort((a, b) => (a.title > b.title ? 1 : -1));
         this.setState({ credits });
+        this.setState({ knownFor });
       });
   }
 
   knownFor() {
-    let credits = this.state.credits;
+    let knownFor = this.state.knownFor;
     let movies = [];
-    credits.sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
-    Object(this.state.credits).forEach(function(movie, i) {
+    knownFor.sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
+    Object(this.state.knownFor).forEach(function(movie, i) {
       if (i < 4) {
         movies.push(movie);
       }
@@ -83,19 +84,40 @@ class Movie extends Component {
               <p>Bio: {person.biography}</p>
             </div>
             <div className="content">
-              <div className="container">
-                <h1>Known For</h1>
+              <h1>Known For</h1>
+              <div className="recommended">
                 {this.knownFor().map(
                   ({
+                    id,
                     character,
                     poster_path,
-                    original_title,
-                    release_date
+                    title,
+                    release_date,
+                    overview
                   }) => (
-                    <p>
-                      {character}, {poster_path}, {original_title},{" "}
-                      {release_date}
-                    </p>
+                    <div className="card" key={id}>
+                      <div className="poster">
+                        <Link to={`/movie/${id}/${tidyLink(title)}`}>
+                          <img
+                            src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
+                            alt={title}
+                            // style={borderStyle}
+                          />
+                        </Link>
+                      </div>
+                      <div className="desc">
+                        <Link
+                          to={`/movie/${id}/${tidyLink(title)}`}
+                          //   style={linkStyle}
+                        >
+                          <h4 className="trans">
+                            {title}({release_date})
+                          </h4>
+                        </Link>
+                        <p>As {character}</p>
+                        <p>{overview}</p>
+                      </div>
+                    </div>
                   )
                 )}
               </div>
