@@ -74,7 +74,7 @@ class Movie extends Component {
     if (person.deathday) {
       return (
         <p>
-          Birth: {person.birthday} / Death: {person.deathday}
+          Birth: {person.birthday} - Death: {person.deathday}
         </p>
       );
     } else {
