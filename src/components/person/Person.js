@@ -1,87 +1,126 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
 class Movie extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			id: '',
-			person: [],
-			credits: [],
-			movies: []
-		};
-	}
+    this.state = {
+      id: "",
+      person: [],
+      credits: [],
+      movies: [],
+      knownFor: []
+    };
+  }
 
-	componentDidMount() {
-		const { id, title } = this.props.match.params;
-		this.setState({ id });
-		axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${API_KEY}&language=en-US`).then((res) => {
-			const person = res.data;
-			this.setState({ person });
-		});
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.setState({ id });
+    axios
+      .get(
+        `https://api.themoviedb.org/3/person/${id}?api_key=${API_KEY}&language=en-US`
+      )
+      .then(res => {
+        const person = res.data;
+        this.setState({ person });
+      });
 
-		axios
-			.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-			.then((res) => {
-				const credits = res.data.cast;
-				this.setState({ credits });
-			});
+    axios
+      .get(
+        `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}&language=en-US`
+      )
+      .then(res => {
+        const creditData = res.data.cast;
+        let credits = [];
+        let knownFor = [];
+        Object(
+          creditData.forEach(function(credit, i) {
+            if (
+              credit.character &&
+              credit.poster_path &&
+              credit.original_title &&
+              credit.release_date
+            ) {
+              credits.push(credit);
+              knownFor.push(credit);
+            }
+          })
+        );
 
-		axios
-			.get(
-				`https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${title}&page=1&include_adult=false&region=US`
-			)
-			.then((res) => {
-				const knownFor = res.data.results;
-				Object(
-					knownFor.map((movies) => {
-						if (movies.id === parseInt(id)) {
-							this.setState({ movies });
-						}
-						return 0;
-					})
-				);
-			});
-	}
+        credits.sort((a, b) => (a.original_title > b.original_title ? 1 : -1));
+        this.setState({ credits });
+      });
+  }
 
-	render(props) {
-		let { person, credits, movies } = this.state;
-		let knownFor = movies.known_for;
-		console.log(knownFor);
-		console.log(credits);
-		document.title = `ClickItOn: ${person.name}`;
+  knownFor() {
+    let credits = this.state.credits;
+    let movies = [];
+    credits.sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
+    Object(this.state.credits).forEach(function(movie, i) {
+      if (i < 4) {
+        movies.push(movie);
+      }
+    });
+    return movies;
+  }
 
-		return (
-			<div className="movieWrapper">
-				<div className="movie-bg">
-					<div className="movie">
-						<div className="header">
-							<p>Name: {person.name}</p>
-							<p>birthday: {person.birthday}</p>
-							<p>Place of birth: {person.place_of_birth}</p>
-							<p>Profile pic path: {person.profile_path}</p>
-							<p>Bio: {person.biography}</p>
-						</div>
-						<div className="content">
-							<div className="container">
-								<h1>Known For</h1>
-								{Object(movies.map(({ id }) => <p>{id}</p>))}
-								<h1>Movie Credits</h1>
-								{credits.map(({ character, poster_path, original_title, release_date }) => (
-									<p>
-										{character}, {poster_path}, {original_title}, {release_date}
-									</p>
-								))}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-	}
+  render(props) {
+    let { person, credits } = this.state;
+    document.title = `ClickItOn: ${person.name}`;
+
+    return (
+      <div className="movieWrapper">
+        <div className="movie-bg">
+          <div className="movie">
+            <div className="header">
+              <p>Name: {person.name}</p>
+              <p>birthday: {person.birthday}</p>
+              <p>Place of birth: {person.place_of_birth}</p>
+              <p>Profile pic path: {person.profile_path}</p>
+              <p>Bio: {person.biography}</p>
+            </div>
+            <div className="content">
+              <div className="container">
+                <h1>Known For</h1>
+                {this.knownFor().map(
+                  ({
+                    character,
+                    poster_path,
+                    original_title,
+                    release_date
+                  }) => (
+                    <p>
+                      {character}, {poster_path}, {original_title},{" "}
+                      {release_date}
+                    </p>
+                  )
+                )}
+              </div>
+              <div className="container">
+                <h1>Movie Credits</h1>
+                {credits.map(
+                  ({
+                    character,
+                    poster_path,
+                    original_title,
+                    release_date
+                  }) => (
+                    <p>
+                      {character}, {poster_path}, {original_title},{" "}
+                      {release_date}
+                    </p>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Movie;
