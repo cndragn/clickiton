@@ -4,135 +4,140 @@
 @import "comingSoon";
 @import "news";
 @import "allNewReleases";
-@import 'movie';
-@import 'node_modules/react-modal-video/scss/modal-video.scss';
-@import 'cast-crew';
-@import 'recommended';
-@import 'search';
-@import 'footer';
+@import "movie";
+@import "node_modules/react-modal-video/scss/modal-video.scss";
+@import "cast-crew";
+@import "recommended";
+@import "search";
+@import "footer";
 
 body {
-	background-color: $light-bg;
-	font-family: $font-body;
+  background-color: $light-bg;
+  font-family: $font-body;
 }
 .container {
-	width: 80%;
-	padding: 30px 15px;
+  width: 80%;
+  padding: 30px 15px;
 }
 
 h2 {
-	margin-top: 0;
-	padding-top: 10px;
-	font-size: 2.5rem;
+  margin-top: 0;
+  padding-top: 10px;
+  font-size: 2.5rem;
 }
 h3 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
+
+a {
+  outline: 0;
+}
+
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .btn-default {
-	background-color: $black;
-	color: $black;
-	border: 2px solid $black;
-	border-radius: 0;
+  background-color: $black;
+  color: $black;
+  border: 2px solid $black;
+  border-radius: 0;
 
-	&:hover {
-		color: $black;
-		background: $primary;
-		border: 2px solid $primary;
-		transition: all 0.4s ease 0s;
-	}
+  &:hover {
+    color: $black;
+    background: $primary;
+    border: 2px solid $primary;
+    transition: all 0.4s ease 0s;
+  }
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
 // Cards
 .cards {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	.card {
-		background-color: $white;
-		border: 1px solid $lightgrey;
-		padding: 8px;
-		margin-bottom: 20px;
-	}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .card {
+    background-color: $white;
+    border: 1px solid $lightgrey;
+    padding: 8px;
+    margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 1200px) {
-	.cards {
-		.card {
-			flex: 0 1 24%;
-		}
-	}
-	.auto-clear .col-lg-1:nth-child(12n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-lg-2:nth-child(6n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-lg-3:nth-child(4n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-lg-4:nth-child(3n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-lg-6:nth-child(odd) {
-		clear: left;
-	}
+  .cards {
+    .card {
+      flex: 0 1 24%;
+    }
+  }
+  .auto-clear .col-lg-1:nth-child(12n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-lg-2:nth-child(6n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-lg-3:nth-child(4n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-lg-4:nth-child(3n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-lg-6:nth-child(odd) {
+    clear: left;
+  }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-	.auto-clear .col-md-1:nth-child(12n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-md-2:nth-child(6n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-md-3:nth-child(4n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-md-4:nth-child(3n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-md-6:nth-child(odd) {
-		clear: left;
-	}
+  .auto-clear .col-md-1:nth-child(12n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-md-2:nth-child(6n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-md-3:nth-child(4n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-md-4:nth-child(3n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-md-6:nth-child(odd) {
+    clear: left;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-	.auto-clear .col-sm-1:nth-child(12n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-sm-2:nth-child(6n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-sm-3:nth-child(4n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-sm-4:nth-child(3n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-sm-6:nth-child(odd) {
-		clear: left;
-	}
+  .auto-clear .col-sm-1:nth-child(12n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-sm-2:nth-child(6n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-sm-3:nth-child(4n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-sm-4:nth-child(3n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-sm-6:nth-child(odd) {
+    clear: left;
+  }
 }
 @media (max-width: 767px) {
-	.auto-clear .col-xs-1:nth-child(12n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-xs-2:nth-child(6n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-xs-3:nth-child(4n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-xs-4:nth-child(3n + 1) {
-		clear: left;
-	}
-	.auto-clear .col-xs-6:nth-child(odd) {
-		clear: left;
-	}
+  .auto-clear .col-xs-1:nth-child(12n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-xs-2:nth-child(6n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-xs-3:nth-child(4n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-xs-4:nth-child(3n + 1) {
+    clear: left;
+  }
+  .auto-clear .col-xs-6:nth-child(odd) {
+    clear: left;
+  }
 }
