@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { tidyLink, releaseYear } from "../../helpers/movies";
+import { Table } from "react-bootstrap";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -84,58 +85,74 @@ class Movie extends Component {
               <p>Bio: {person.biography}</p>
             </div>
             <div className="content">
-              <h1>Known For</h1>
-              <div className="recommended">
-                {this.knownFor().map(
-                  ({
-                    id,
-                    character,
-                    poster_path,
-                    title,
-                    release_date,
-                    overview
-                  }) => (
-                    <div className="card" key={id}>
-                      <div className="poster">
-                        <Link to={`/movie/${id}/${tidyLink(title)}`}>
-                          <img
-                            src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
-                            alt={title}
-                            // style={borderStyle}
-                          />
-                        </Link>
+              <div className="container">
+                <h1>Known For</h1>
+                <div className="recommended">
+                  {this.knownFor().map(
+                    ({
+                      id,
+                      character,
+                      poster_path,
+                      title,
+                      release_date,
+                      overview
+                    }) => (
+                      <div className="card" key={id}>
+                        <div className="poster">
+                          <Link to={`/movie/${id}/${tidyLink(title)}`}>
+                            <img
+                              src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
+                              alt={title}
+                              // style={borderStyle}
+                            />
+                          </Link>
+                        </div>
+                        <div className="desc">
+                          <Link
+                            to={`/movie/${id}/${tidyLink(title)}`}
+                            //   style={linkStyle}
+                          >
+                            <h4 className="trans">
+                              {title}({releaseYear(release_date)})
+                            </h4>
+                          </Link>
+                          <p>As {character}</p>
+                          <p>{overview}</p>
+                        </div>
                       </div>
-                      <div className="desc">
-                        <Link
-                          to={`/movie/${id}/${tidyLink(title)}`}
-                          //   style={linkStyle}
-                        >
-                          <h4 className="trans">
-                            {title}({releaseYear(release_date)})
-                          </h4>
-                        </Link>
-                        <p>As {character}</p>
-                        <p>{overview}</p>
-                      </div>
-                    </div>
-                  )
-                )}
+                    )
+                  )}
+                </div>
               </div>
               <div className="container">
                 <h1>Movie Credits</h1>
-                {credits.map(
-                  ({
-                    character,
-                    poster_path,
-                    original_title,
-                    release_date
-                  }) => (
-                    <p>
-                      {character}, {poster_path}, {original_title},{" "}
-                      {release_date}
-                    </p>
-                  )
-                )}
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Movie Title</th>
+                      <th>Release Date</th>
+                    </tr>
+                  </thead>
+                  {credits.map(
+                    ({ id, character, original_title, release_date }) => (
+                      <tbody>
+                        <tr>
+                          <td>{character} </td>
+                          <td>
+                            <Link
+                              to={`/movie/${id}/${tidyLink(original_title)}`}
+                              //   style={linkStyle}
+                            >
+                              {original_title}
+                            </Link>
+                          </td>
+                          <td>{release_date}</td>
+                        </tr>
+                      </tbody>
+                    )
+                  )}
+                </Table>
               </div>
             </div>
           </div>
