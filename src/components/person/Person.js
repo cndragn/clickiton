@@ -99,7 +99,7 @@ class Movie extends Component {
             <div className="movie-header">
               <div className="poster">
                 <img
-                  alt={`${person.name} profile photo`}
+                  alt={`${person.name}`}
                   src={`http://image.tmdb.org/t/p/w342/${person.profile_path}`}
                 />
               </div>
