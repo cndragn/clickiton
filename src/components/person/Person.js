@@ -72,21 +72,31 @@ class Movie extends Component {
   render(props) {
     let { person, credits } = this.state;
     document.title = `ClickItOn: ${person.name}`;
-
+    console.log(person);
     return (
       <div className="movieWrapper">
         <div className="movie-bg">
           <div className="movie">
-            <div className="header">
-              <p>Name: {person.name}</p>
-              <p>birthday: {person.birthday}</p>
-              <p>Place of birth: {person.place_of_birth}</p>
-              <p>Profile pic path: {person.profile_path}</p>
-              <p>Bio: {person.biography}</p>
+            <div className="movie-header">
+              <div className="poster">
+                <img
+                  alt={`${person.name} profile photo`}
+                  src={`http://image.tmdb.org/t/p/w342/${person.profile_path}`}
+                />
+              </div>
+              <div className="movie-details">
+                <h1>{person.name}</h1>
+                <p>
+                  born: {person.birthday} died: {person.deathday}
+                </p>
+                <p>Place of birth: {person.place_of_birth}</p>
+                <p>Professional roles: {person.known_for_department}</p>
+                <p>{person.biography}</p>
+              </div>
             </div>
             <div className="content">
               <div className="container">
-                <h1>Known For</h1>
+                <h2>Known For</h2>
                 <div className="recommended">
                   {this.knownFor().map(
                     ({
@@ -125,7 +135,7 @@ class Movie extends Component {
                 </div>
               </div>
               <div className="container">
-                <h1>Movie Credits</h1>
+                <h2>Movie Credits</h2>
                 <Table striped bordered hover>
                   <thead>
                     <tr>
