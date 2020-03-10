@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { tidyLink, releaseYear } from "../../helpers/movies";
 import { Table } from "react-bootstrap";
+import profileBackground from "../../images/profileBg.jpg";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -69,12 +70,30 @@ class Movie extends Component {
     return movies;
   }
 
+  birthDeathDay(person) {
+    if (person.deathday) {
+      return (
+        <p>
+          Birth: {person.birthday} / Death: {person.deathday}
+        </p>
+      );
+    } else {
+      return <p>Birth: {person.birthday}</p>;
+    }
+  }
+
   render(props) {
     let { person, credits } = this.state;
+    const backdrop = profileBackground;
     document.title = `ClickItOn: ${person.name}`;
     console.log(person);
     return (
-      <div className="movieWrapper">
+      <div
+        className="movieWrapper"
+        style={{
+          backgroundImage: `url(${backdrop})`
+        }}
+      >
         <div className="movie-bg">
           <div className="movie">
             <div className="movie-header">
@@ -86,9 +105,7 @@ class Movie extends Component {
               </div>
               <div className="movie-details">
                 <h1>{person.name}</h1>
-                <p>
-                  born: {person.birthday} died: {person.deathday}
-                </p>
+                {this.birthDeathDay(person)}
                 <p>Place of birth: {person.place_of_birth}</p>
                 <p>Professional roles: {person.known_for_department}</p>
                 <p>{person.biography}</p>
