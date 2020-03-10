@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { tidyLink } from "../../helpers/movies";
+import { tidyLink, releaseYear } from "../../helpers/movies";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -111,7 +111,7 @@ class Movie extends Component {
                           //   style={linkStyle}
                         >
                           <h4 className="trans">
-                            {title}({release_date})
+                            {title}({releaseYear(release_date)})
                           </h4>
                         </Link>
                         <p>As {character}</p>
