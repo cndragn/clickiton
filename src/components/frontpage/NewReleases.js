@@ -15,22 +15,32 @@ class NewReleases extends Component {
   movieList = num => {
     const { movies } = this.props;
     let movieArr = [];
+    let backdrop = "";
+    movies.sort(function() {
+      return 0.5 - Math.random();
+    });
     Object(movies).forEach(function(movie, i) {
+      if (i === 0) {
+        backdrop = movie.backdrop_path;
+      }
       if (movie.poster_path !== null && movieArr.length < num) {
         movieArr.push(movie);
       }
     });
+    movieArr.unshift(backdrop);
     return movieArr;
   };
 
   render() {
-    console.log(this.props);
+    let movies = this.movieList(6);
+    let backdropImg = `https://image.tmdb.org/t/p/original/${movies[0]}`;
+    console.log(backdropImg);
     const { backdrop } = this.props;
     return (
       <div
         className="featured-bg"
         style={{
-          backgroundImage: `url(${backdrop})`
+          backgroundImage: `url(${backdropImg})`
         }}
       >
         <div className="featured">
@@ -43,7 +53,7 @@ class NewReleases extends Component {
             </div>
 
             <div className="show-grid auto-clear" />
-            {this.movieList(6).map(({ id, title, poster_path }) => (
+            {movies.slice(1).map(({ id, title, poster_path }) => (
               <Col xs={4} md={2} key={id}>
                 <Link to={`/movie/${id}/${tidyLink(title)}`}>
                   <img
