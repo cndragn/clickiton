@@ -53,7 +53,7 @@ class Movie extends Component {
             }
           })
         );
-        credits.sort((a, b) => (a.title > b.title ? 1 : -1));
+        credits.sort((a, b) => (a.release_date < b.release_date ? 1 : -1));
         this.setState({ credits });
         this.setState({ knownFor });
       });
