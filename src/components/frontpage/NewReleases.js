@@ -35,7 +35,6 @@ class NewReleases extends Component {
     let movies = this.movieList(6);
     let backdropImg = `https://image.tmdb.org/t/p/original/${movies[0]}`;
     console.log(backdropImg);
-    const { backdrop } = this.props;
     return (
       <div
         className="featured-bg"
