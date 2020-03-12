@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { tidyLink, releaseYear } from "../../helpers/movies";
 import { Table } from "react-bootstrap";
 import profileBackground from "../../images/profileBg.jpg";
+import blankProfilePic from "../../images/blank-profile.jpg";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -58,6 +59,19 @@ class Movie extends Component {
       });
   }
 
+  profilePhoto(person) {
+    if (person.profile_path) {
+      return (
+        <img
+          alt={`${person.name}`}
+          src={`http://image.tmdb.org/t/p/w342/${person.profile_path}`}
+        />
+      );
+    } else {
+      return <img alt={`${person.name}`} src={blankProfilePic} />;
+    }
+  }
+
   knownFor() {
     let knownFor = this.state.knownFor;
     let movies = [];
@@ -86,7 +100,7 @@ class Movie extends Component {
     let { person, credits } = this.state;
     const backdrop = profileBackground;
     document.title = `ClickItOn: ${person.name}`;
-    console.log(person);
+    console.log(person.profile_path);
     return (
       <div
         className="movieWrapper"
@@ -97,12 +111,7 @@ class Movie extends Component {
         <div className="movie-bg">
           <div className="movie">
             <div className="movie-header">
-              <div className="poster">
-                <img
-                  alt={`${person.name}`}
-                  src={`http://image.tmdb.org/t/p/w342/${person.profile_path}`}
-                />
-              </div>
+              <div className="poster">{this.profilePhoto(person)}</div>
               <div className="movie-details">
                 <h1>{person.name}</h1>
                 {this.birthDeathDay(person)}
@@ -158,7 +167,7 @@ class Movie extends Component {
                     <tr>
                       <th>Role</th>
                       <th>Movie Title</th>
-                      <th>Release Date</th>
+                      <th>Release Year</th>
                     </tr>
                   </thead>
                   {credits.map(
@@ -174,7 +183,7 @@ class Movie extends Component {
                               {original_title}
                             </Link>
                           </td>
-                          <td>{release_date}</td>
+                          <td>{releaseYear(release_date)}</td>
                         </tr>
                       </tbody>
                     )

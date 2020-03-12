@@ -49,7 +49,7 @@ class Cast extends Component {
   render() {
     return (
       <div className="cast-crew">
-        {this.topCast().length > 0 ? <h2>Cast!</h2> : ""}
+        {this.topCast().length > 0 ? <h2>Cast</h2> : ""}
         <div className="cast">
           <div className="cards">
             {this.topCast().map(

@@ -16,7 +16,6 @@ class Movie extends Component {
   componentDidMount() {
     const { id } = this.state.id;
     this.props.fetchMovie(id, movieImg);
-    console.log(movieImg);
   }
 
   displayHdr(movie, backdrop) {
@@ -30,9 +29,7 @@ class Movie extends Component {
 
   render() {
     const { movie, backdrop } = this.props;
-    console.log(backdrop);
     const accent = this.state.colors[0];
-    console.log(movie.poster_path);
     return (
       <div
         className="movieWrapper"
