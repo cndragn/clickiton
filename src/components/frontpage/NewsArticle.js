@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchNews } from "../../actions";
-import { Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+// import { Link } from "react-router-dom";
 
 class News extends React.Component {
   componentDidMount() {
@@ -27,18 +26,12 @@ class News extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="news-title">
-          <h2>News</h2>
-          <LinkContainer to="/news">
-            <Button>View More</Button>
-          </LinkContainer>
-        </div>
-
+      <div className="news-articles">
+        <h2>News</h2>
         <div className="news-wrapper">
-          {this.newsLimit().map(
+          {this.props.articles.map(
             ({ title, description, source, url, urlToImage }, id) => (
-              <div className="card media">
+              <div className="card media" key={id}>
                 <div className="media-left">
                   <img className="media-object" alt={title} src={urlToImage} />
                 </div>
@@ -48,6 +41,7 @@ class News extends React.Component {
                       {title.replace(/<.*?>/gm, "")}
                     </h4>
                   </a>
+                  <p>{description}</p>
                   <p>{source.name}</p>
                 </div>
               </div>

@@ -1,3 +1,27 @@
+.news-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 15px;
+  .btn-default {
+    background-color: $primary;
+    color: $black;
+    border-color: $primary;
+    height: 100%;
+
+    &:hover {
+      border-color: $black;
+      color: $black;
+      transition: all 0.4s ease 0s;
+    }
+  }
+}
+
+.news-articles {
+  width: 98%;
+  padding: 30px 15px;
+  margin-top: 165px;
+}
+
 .news-wrapper {
   display: flex;
   flex-wrap: wrap;
