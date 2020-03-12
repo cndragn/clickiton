@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { tidyLink } from "../../helpers/movies";
+import { releaseYear } from "../../helpers/movies";
 
 const API_KEY = `${process.env.REACT_APP_MOVIE_DB_API_KEY}`;
 
@@ -44,25 +45,32 @@ class Recommended extends Component {
       <div>
         {this.selectMovies().length > 0 ? <h2>Similar Movies</h2> : ""}
         <div className="recommended">
-          {this.selectMovies().map(({ id, title, poster_path, overview }) => (
-            <div className="card" key={id}>
-              <div className="poster">
-                <Link to={`/movie/${id}/${tidyLink(title)}`}>
-                  <img
-                    src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
-                    alt={title}
-                    style={borderStyle}
-                  />
-                </Link>
+          {this.selectMovies().map(
+            ({ id, title, poster_path, overview, release_date }) => (
+              <div className="card" key={id}>
+                <div className="poster">
+                  <Link to={`/movie/${id}/${tidyLink(title)}`}>
+                    <img
+                      src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
+                      alt={title}
+                      style={borderStyle}
+                    />
+                  </Link>
+                </div>
+                <div className="desc">
+                  <Link
+                    to={`/movie/${id}/${tidyLink(title)}`}
+                    style={linkStyle}
+                  >
+                    <h4 className="trans">
+                      {title}({releaseYear(release_date)})
+                    </h4>
+                  </Link>
+                  <p>{overview}</p>
+                </div>
               </div>
-              <div className="desc">
-                <Link to={`/movie/${id}/${tidyLink(title)}`} style={linkStyle}>
-                  <h4 className="trans">{title}</h4>
-                </Link>
-                <p>{overview}</p>
-              </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     );
