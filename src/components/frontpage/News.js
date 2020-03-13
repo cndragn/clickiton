@@ -64,5 +64,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { fetchNews })(News);
-
-// title, description, source, url, publishedAt, content, urlToImage;

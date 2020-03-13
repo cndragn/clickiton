@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchNews } from "../../actions";
-// import { Link } from "react-router-dom";
 
 class News extends React.Component {
   componentDidMount() {
@@ -58,5 +57,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { fetchNews })(News);
-
-// title, description, source, url, publishedAt, content, urlToImage;

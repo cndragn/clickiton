@@ -100,7 +100,6 @@ class Movie extends Component {
     let { person, credits } = this.state;
     const backdrop = profileBackground;
     document.title = `ClickItOn: ${person.name}`;
-    console.log(person.profile_path);
     return (
       <div
         className="movieWrapper"
@@ -139,15 +138,11 @@ class Movie extends Component {
                             <img
                               src={`http://image.tmdb.org/t/p/w92/${poster_path}`}
                               alt={title}
-                              // style={borderStyle}
                             />
                           </Link>
                         </div>
                         <div className="desc">
-                          <Link
-                            to={`/movie/${id}/${tidyLink(title)}`}
-                            //   style={linkStyle}
-                          >
+                          <Link to={`/movie/${id}/${tidyLink(title)}`}>
                             <h4 className="trans">
                               {title}({releaseYear(release_date)})
                             </h4>
@@ -178,7 +173,6 @@ class Movie extends Component {
                           <td>
                             <Link
                               to={`/movie/${id}/${tidyLink(original_title)}`}
-                              //   style={linkStyle}
                             >
                               {original_title}
                             </Link>

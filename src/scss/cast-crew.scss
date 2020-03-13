@@ -1,43 +1,41 @@
 .cast-crew {
-	img {
-		// height: 270px;
-		width: 100%;
-		// width: 185px;
-	}
-	.cards {
-		justify-content: space-between;
-		.card {
-			flex: 47%;
-			margin: 0 4px 8px 4px;
-		}
-	}
-	.cards::after {
-		content: "";
-		flex: 47%;
-	}
+  img {
+    width: 100%;
+  }
+  .cards {
+    justify-content: space-between;
+    .card {
+      flex: 47%;
+      margin: 0 4px 8px 4px;
+    }
+  }
+  .cards::after {
+    content: "";
+    flex: 47%;
+  }
 }
 
 @media (min-width: 768px) {
-	.cast-crew {
-		.cards {
-			.card {
-				flex: 20%;
-			}
-		}
-	}
+  .cast-crew {
+    .cards {
+      .card {
+        flex: 20%;
+      }
+    }
+  }
 }
 
 @media (min-width: 1024px) {
-	.cast-crew {
-		img {
-			width: 100%;
-		}
-		.cards {
-			justify-content: initial;
-			.card {
-				flex: 0 1 14%;
-				margin: 0 12px 20px 12px;
-			}
-		}
-	}
+  .cast-crew {
+    img {
+      width: 100%;
+    }
+    .cards {
+      justify-content: initial;
+      .card {
+        flex: 0 1 14%;
+        margin: 0 12px 20px 12px;
+      }
+    }
+  }
 }
